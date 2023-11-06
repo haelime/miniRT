@@ -6,7 +6,7 @@
 /*   By: hyunjunk <hyunjunk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 19:24:29 by hyunjunk          #+#    #+#             */
-/*   Updated: 2023/11/06 19:28:24 by hyunjunk         ###   ########.fr       */
+/*   Updated: 2023/11/06 19:36:11 by hyunjunk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@
 typedef struct s_scene
 {
 	t_object	*objects;
+	t_vector	ambient;
 	t_light		*lights;
+	t_camera	*camera;
 }				t_scene;
 
 #endif // SCENE_H
