@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Light.h                                            :+:      :+:    :+:   */
+/*   Scene.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyunjunk <hyunjunk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/06 19:25:03 by hyunjunk          #+#    #+#             */
-/*   Updated: 2023/11/06 19:26:57 by hyunjunk         ###   ########.fr       */
+/*   Created: 2023/11/06 19:24:29 by hyunjunk          #+#    #+#             */
+/*   Updated: 2023/11/06 19:28:24 by hyunjunk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIGHT_H
-# define LIGHT_H
+#ifndef SCENE_H
+# define SCENE_H
 
-# include "Vector.h"
+# include "Object.h"
+# include "Light.h"
+# include "Camera.h"
 
-typedef struct s_light
+typedef struct s_scene
 {
-	t_vector	center;
-	t_vector	color;
-	float		intensity;
-}				t_light;
+	t_object	*objects;
+	t_light		*lights;
+}				t_scene;
 
-#endif // LIGHT_H
+#endif // SCENE_H
