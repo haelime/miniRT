@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: hyunjunk <hyunjunk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 01:15:28 by haeem             #+#    #+#             */
-/*   Updated: 2023/11/05 20:28:17 by haeem            ###   ########seoul.kr  */
+/*   Updated: 2023/11/08 17:15:54 by hyunjunk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ static size_t	wordcount(const char *s, char c)
 	size_t	wc;
 	size_t	i;
 
+	if (s == NULL)
+		return (0);
 	i = 0;
 	wc = 0;
 	while (s[i] != '\0')
