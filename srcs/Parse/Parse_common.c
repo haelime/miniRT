@@ -6,7 +6,7 @@
 /*   By: hyunjunk <hyunjunk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 20:17:49 by hyunjunk          #+#    #+#             */
-/*   Updated: 2023/11/06 20:39:22 by hyunjunk         ###   ########.fr       */
+/*   Updated: 2023/11/08 16:44:04 by hyunjunk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 #include "libft.h"
 #include "get_next_line_bonus.h"
 
-void		parse_resolution(char *line, t_scene *scene)
+void	parse_resolution(char *line, t_scene *scene)
 {
 	char	**split;
 
@@ -30,7 +30,7 @@ void		parse_resolution(char *line, t_scene *scene)
 	free_split(split);
 }
 
-void		parse_ambient(char *line, t_scene *scene)
+void	parse_ambient(char *line, t_scene *scene)
 {
 	char	**split;
 
@@ -43,9 +43,9 @@ void		parse_ambient(char *line, t_scene *scene)
 	free_split(split);
 }
 
-void		parse_camera(char *line, t_scene *scene)
+void	parse_camera(char *line, t_scene *scene)
 {
-	char	**split;
+	char		**split;
 	t_camera	*camera;
 
 	split = ft_split(line, ' ');
@@ -64,7 +64,7 @@ void		parse_camera(char *line, t_scene *scene)
 	free_split(split);
 }
 
-void		parse_light(char *line, t_scene *scene)
+void	parse_light(char *line, t_scene *scene)
 {
 	char	**split;
 	t_light	*light;

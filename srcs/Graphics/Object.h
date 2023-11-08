@@ -6,7 +6,7 @@
 /*   By: hyunjunk <hyunjunk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 18:19:40 by hyunjunk          #+#    #+#             */
-/*   Updated: 2023/11/06 19:35:33 by hyunjunk         ###   ########.fr       */
+/*   Updated: 2023/11/08 16:45:11 by hyunjunk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 typedef struct s_hit	t_hit;
 
 typedef struct s_object {
-	t_vector	center;
+	t_vector	pos;
 	t_vector	normal;
 	float		reachable_max_radius;
 	t_hit		((*get_hit)(t_vector	*ray, t_vector	*origin));
