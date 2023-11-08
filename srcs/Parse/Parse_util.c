@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Camera.h                                           :+:      :+:    :+:   */
+/*   Parse_util.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyunjunk <hyunjunk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/06 19:27:40 by hyunjunk          #+#    #+#             */
-/*   Updated: 2023/11/08 16:46:48 by hyunjunk         ###   ########.fr       */
+/*   Created: 2023/11/08 17:57:54 by hyunjunk          #+#    #+#             */
+/*   Updated: 2023/11/08 17:59:01 by hyunjunk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAMERA_H
-# define CAMERA_H
+#include "Parse.h"
 
-# include "Vector.h"
-# include "Matrix.h"
-
-typedef struct s_camera
+float	ft_max3f(float a, float b, float c)
 {
-	t_vector	pos;
-	t_vector	normal;
-	float		fov;
-}				t_camera;
+	float	max;
 
-#endif // CAMERA_H
+	max = a;
+	if (b > max)
+		max = b;
+	if (c > max)
+		max = c;
+	return (max);
+}

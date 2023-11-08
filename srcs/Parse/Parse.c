@@ -6,7 +6,7 @@
 /*   By: hyunjunk <hyunjunk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 19:51:07 by hyunjunk          #+#    #+#             */
-/*   Updated: 2023/11/06 20:21:39 by hyunjunk         ###   ########.fr       */
+/*   Updated: 2023/11/08 17:58:05 by hyunjunk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,16 @@ void	exit_parse(char *line)
 	free(line);
 	write(1, "Error\n", 6);
 	exit(0);
+}
+
+void	free_split(char **split)
+{
+	int	i;
+
+	i = 0;
+	while (split[i])
+		free(split[i++]);
+	free(split);
 }
 
 char		*get_next_line(int fd);

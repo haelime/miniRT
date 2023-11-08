@@ -6,7 +6,7 @@
 /*   By: hyunjunk <hyunjunk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 15:53:22 by hyunjunk          #+#    #+#             */
-/*   Updated: 2023/11/08 16:42:10 by hyunjunk         ###   ########.fr       */
+/*   Updated: 2023/11/08 17:23:04 by hyunjunk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ typedef struct s_sphere
 	double			radius;
 }				t_sphere;
 
-t_hit		get_hit(t_vector	*ray, t_vector	*origin);
+t_hit		sphere_get_hit(t_vector	*ray, t_vector	*origin);
 
-void		transform(t_matrix *matrix);
+void		sphere_transform(t_matrix *matrix);
 
 #endif
