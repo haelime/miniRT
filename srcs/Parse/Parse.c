@@ -6,7 +6,7 @@
 /*   By: hyunjunk <hyunjunk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 19:51:07 by hyunjunk          #+#    #+#             */
-/*   Updated: 2023/11/08 17:58:05 by hyunjunk         ###   ########.fr       */
+/*   Updated: 2023/11/08 19:45:37 by hyunjunk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,12 +92,12 @@ void	parse_object(char *line, t_scene *scene)
 {
 	if (ft_strncmp(line, "sp ", 3) == 0)
 		parse_sphere(line, scene);
-	else if (ft_strncmp(line, "pl ", 3) == 0)
-		parse_plane(line, scene);
-	else if (ft_strncmp(line, "sq ", 3) == 0)
-		parse_square(line, scene);
-	else if (ft_strncmp(line, "cy ", 3) == 0)
-		parse_cylinder(line, scene);
+	//else if (ft_strncmp(line, "pl ", 3) == 0)
+	//	parse_plane(line, scene);
+	//else if (ft_strncmp(line, "sq ", 3) == 0)
+	//	parse_square(line, scene);
+	//else if (ft_strncmp(line, "cy ", 3) == 0)
+	//	parse_cylinder(line, scene);
 	else if (ft_strncmp(line, "tr ", 3) == 0)
 		parse_triangle(line, scene);
 }

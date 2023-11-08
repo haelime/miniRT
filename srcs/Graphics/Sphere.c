@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Parse.h                                            :+:      :+:    :+:   */
+/*   Sphere.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyunjunk <hyunjunk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/06 19:50:02 by hyunjunk          #+#    #+#             */
-/*   Updated: 2023/11/08 19:42:54 by hyunjunk         ###   ########.fr       */
+/*   Created: 2023/11/08 19:43:42 by hyunjunk          #+#    #+#             */
+/*   Updated: 2023/11/08 19:44:23 by hyunjunk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSE_H
-# define PARSE_H
+#include "Sphere.h"
 
-# include "Scene.h"
+t_hit	sphere_get_hit(t_vector	*ray, t_vector	*origin)
+{
+	t_hit	ret;
 
-void	parse(char *file, t_scene *scene);
+	return (ret);
+}
 
-void	exit_parse(char *line);
-void	free_split(char **split);
-float	ft_max3f(float a, float b, float c);
-float	ft_atof(const char *str);
-
-#endif /* PARSE_H */
+void	sphere_transform(t_matrix *matrix)
+{
+	return ;
+}

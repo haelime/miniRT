@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Parse.h                                            :+:      :+:    :+:   */
+/*   Triangle.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyunjunk <hyunjunk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/06 19:50:02 by hyunjunk          #+#    #+#             */
-/*   Updated: 2023/11/08 19:42:54 by hyunjunk         ###   ########.fr       */
+/*   Created: 2023/11/08 19:44:39 by hyunjunk          #+#    #+#             */
+/*   Updated: 2023/11/08 19:44:56 by hyunjunk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSE_H
-# define PARSE_H
+#include "Triangle.h"
 
-# include "Scene.h"
+t_hit	triangle_get_hit(t_vector	*ray, t_vector	*origin)
+{
+	t_hit	ret;
 
-void	parse(char *file, t_scene *scene);
+	return (ret);
+}
 
-void	exit_parse(char *line);
-void	free_split(char **split);
-float	ft_max3f(float a, float b, float c);
-float	ft_atof(const char *str);
-
-#endif /* PARSE_H */
+void	triangle_transform(t_matrix *matrix)
+{
+	return ;
+}

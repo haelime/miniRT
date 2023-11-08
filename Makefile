@@ -6,13 +6,13 @@
 #    By: hyunjunk <hyunjunk@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/11 14:22:09 by haeem             #+#    #+#              #
-#    Updated: 2023/11/08 19:30:00 by hyunjunk         ###   ########.fr        #
+#    Updated: 2023/11/08 19:56:46 by hyunjunk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -g3 #werror
 SRCDIR = $(CURDIR)
 
 NAME = miniRT
@@ -28,6 +28,8 @@ SOURCES = $(addprefix $(CURDIR)/srcs/,\
 main.c\
 Control/Scene.c\
 Graphics/Vector.c\
+Graphics/Sphere.c\
+Graphics/Triangle.c\
 main.c\
 Parse/Parse.c\
 Parse/Parse_common.c\
@@ -67,7 +69,7 @@ all: $(NAME)
 # 	@make WITH_BONUS=1 all
 
 %.o: %.c
-	@$(CC) $(CFLAG) -c $< -o $@ -I $(HDR) -I $(MLX_DIR) -I $(LIBFTDIR)
+	@$(CC) $(CFLAGS) -c $< -o $@ -I $(HDR) -I $(MLX_DIR) -I $(LIBFTDIR)
 
 $(NAME): $(OBJ)
 	@$(MAKE) -C $(LIBFTDIR) all
