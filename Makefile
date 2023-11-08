@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hyunjunk <hyunjunk@student.42.fr>          +#+  +:+       +#+         #
+#    By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/11 14:22:09 by haeem             #+#    #+#              #
-#    Updated: 2023/11/08 19:56:46 by hyunjunk         ###   ########.fr        #
+#    Updated: 2023/11/08 20:21:46 by haeem            ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
 
 CC = cc
-CFLAGS = -Wall -Wextra -g3 #werror
+CFLAGS = -Wall -Wextra -g3 -fsanitize=address #werror
 SRCDIR = $(CURDIR)
 
 NAME = miniRT
@@ -27,6 +27,7 @@ MLX_DIR = ./mlx
 SOURCES = $(addprefix $(CURDIR)/srcs/,\
 main.c\
 Control/Scene.c\
+Control/Image.c\
 Graphics/Vector.c\
 Graphics/Sphere.c\
 Graphics/Triangle.c\

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Parse_object.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunjunk <hyunjunk@student.42.fr>          +#+  +:+       +#+        */
+/*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 16:50:04 by hyunjunk          #+#    #+#             */
-/*   Updated: 2023/11/08 18:54:43 by hyunjunk         ###   ########.fr       */
+/*   Updated: 2023/11/08 20:12:17 by haeem            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,11 @@ void	parse_sphere(char *line, t_scene *scene)
 {
 	char **const	split = ft_split(line, ' ');
 	char **const	pos_split = ft_split(split[1], ',');
-	char **const	rgb_split = ft_split(split[4], ',');
+	char **const	rgb_split = ft_split(split[3], ',');
 	t_sphere *const	sphere = (t_sphere *)malloc(sizeof(t_sphere));
 
 	if (split[0] == NULL || split[1] == NULL || split[2] == NULL
-		|| split[3] == NULL || split[4] == NULL || split[5] != NULL
+		|| split[3] == NULL || split[4] != NULL
 		|| pos_split[0] == NULL || pos_split[1] == NULL || pos_split[2] == NULL
 		|| pos_split[3] != NULL
 		|| rgb_split[0] == NULL || rgb_split[1] == NULL || rgb_split[2] == NULL

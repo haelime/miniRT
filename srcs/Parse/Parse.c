@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunjunk <hyunjunk@student.42.fr>          +#+  +:+       +#+        */
+/*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 19:51:07 by hyunjunk          #+#    #+#             */
-/*   Updated: 2023/11/08 19:45:37 by hyunjunk         ###   ########.fr       */
+/*   Updated: 2023/11/08 20:30:22 by haeem            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ void	parse(char *file, t_scene *scene)
 		else
 			exit_parse(line);
 		free(line);
+		line=NULL;
 	}
 	close(fd);
 }

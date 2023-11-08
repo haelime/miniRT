@@ -1,35 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Scene.h                                            :+:      :+:    :+:   */
+/*   Image.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/06 19:24:29 by hyunjunk          #+#    #+#             */
-/*   Updated: 2023/11/08 20:24:17 by haeem            ###   ########seoul.kr  */
+/*   Created: 2023/11/08 16:08:31 by haeem             #+#    #+#             */
+/*   Updated: 2023/11/08 20:35:08 by haeem            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCENE_H
-# define SCENE_H
+#ifndef IMAGE_H
+# define IMAGE_H
 
-# include "Object.h"
-# include "Light.h"
-# include "Camera.h"
+# include "../../mlx/mlx.h"
 
-typedef struct s_scene
+# define WIN_WIDTH 2560
+# define WIN_HEIGHT 1300
+
+# define IMG_WIDTH 1920
+# define IMG_HEIGHT 1060
+
+typedef struct s_img
 {
-	t_object	**objects;
-	int			object_num;
-	int			object_capacity;
-	t_vector	ambient;
-	float		ambient_ratio;
-	t_light		*lights;
-	int			light_num;
-	t_camera	*camera;
-	t_vector	resolution;
-}				t_scene;
+	void	*ptr;
+	int		*data;
+	int		size_l;
+	int		bpp;
+	int		endian;
+	int		width_max;
+	int		height_max;
+}t_img;
 
-void	add_object(t_scene *scene, t_object *object);
+typedef struct s_mlx
+{
+	void	*mlx;
+	void	*win;
+}t_mlx;
 
-#endif // SCENE_H
+void	reset_img(t_img *img);
+void	draw_rt();
+
+#endif

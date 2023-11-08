@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunjunk <hyunjunk@student.42.fr>          +#+  +:+       +#+        */
+/*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 19:50:50 by haeem             #+#    #+#             */
-/*   Updated: 2023/11/08 19:28:43 by hyunjunk         ###   ########.fr       */
+/*   Updated: 2023/11/08 20:37:52 by haeem            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,12 @@
 #include "../includes/minirt.h"
 #include "../libft/includes/libft.h"
 #include "Parse.h"
+#include "Control/Image.h"
+
 
 int	main(int argc, char **argv)
 {
-	t_scene	scene;
+	static t_scene	scene;
 
 	if ((argc != 2 && argc != 3)
 		|| (argc == 3 && ft_strcmp(argv[1], "--save") != 0))
@@ -28,7 +30,7 @@ int	main(int argc, char **argv)
 	if (argc == 3 && ft_strcmp(argv[1], "--save") == 0);
 		// TODO
 	parse(argv[1], &scene);
-
+	draw_rt();
 	return (0);
 }
 
