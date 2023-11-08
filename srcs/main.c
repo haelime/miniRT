@@ -6,17 +6,18 @@
 /*   By: hyunjunk <hyunjunk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 19:50:50 by haeem             #+#    #+#             */
-/*   Updated: 2023/11/06 19:49:57 by hyunjunk         ###   ########.fr       */
+/*   Updated: 2023/11/08 19:28:43 by hyunjunk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include "../includes/minirt.h"
 #include "../libft/includes/libft.h"
+#include "Parse.h"
 
 int	main(int argc, char **argv)
 {
-	t_scene scene;
+	t_scene	scene;
 
 	if ((argc != 2 && argc != 3)
 		|| (argc == 3 && ft_strcmp(argv[1], "--save") != 0))

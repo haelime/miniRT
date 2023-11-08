@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+         #
+#    By: hyunjunk <hyunjunk@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/11 14:22:09 by haeem             #+#    #+#              #
-#    Updated: 2023/11/05 20:40:38 by haeem            ###   ########seoul.kr   #
+#    Updated: 2023/11/08 19:30:00 by hyunjunk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,14 @@ MLX_DIR = ./mlx
 
 SOURCES = $(addprefix $(CURDIR)/srcs/,\
 main.c\
+Control/Scene.c\
+Graphics/Vector.c\
+main.c\
+Parse/Parse.c\
+Parse/Parse_common.c\
+Parse/Parse_object.c\
+Parse/Parse_object2.c\
+Parse/Parse_util.c\
 )
 
 # BONUSES = $(addprefix $(CURDIR)/srcs_bonus/,\
@@ -36,7 +44,13 @@ OBJECTS = $(SOURCES:.c=.o)
 # BONUSOBJECTS = $(BONUSES:.c=.o)
 ALLOBJECTS = $(SOURCES:.c=.o) $(BONUSES:.c=.o)
 
-HEADER = $(CURDIR)/includes
+HEADER = -I./includes\
+-I./srcs/Control\
+-I./srcs/Graphics\
+-I./srcs/Parse\
+-I./libft/includes\
+-I./libft/get_next_line\
+
 # BONUSHEADER = $(CURDIR)/include_bonus
 
 # ifdef WITH_BONUS
