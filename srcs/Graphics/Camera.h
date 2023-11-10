@@ -6,7 +6,7 @@
 /*   By: hyunjunk <hyunjunk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 19:27:40 by hyunjunk          #+#    #+#             */
-/*   Updated: 2023/11/08 16:46:48 by hyunjunk         ###   ########.fr       */
+/*   Updated: 2023/11/10 17:07:45 by hyunjunk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 typedef struct s_camera
 {
 	t_vector	pos;
-	t_vector	normal;
+	t_vector	norm_rotation;
 	float		fov;
 }				t_camera;
 

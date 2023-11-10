@@ -6,7 +6,7 @@
 /*   By: hyunjunk <hyunjunk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 20:17:49 by hyunjunk          #+#    #+#             */
-/*   Updated: 2023/11/10 15:21:55 by hyunjunk         ###   ########.fr       */
+/*   Updated: 2023/11/10 17:07:30 by hyunjunk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void	parse_camera(char *line, t_scene *scene)
 	scene->camera = (t_camera *)malloc(sizeof(t_camera));
 	scene->camera->pos = make_vector(ft_atof(pos_split[0]),
 			ft_atof(pos_split[1]), ft_atof(pos_split[2]), 1.f);
-	scene->camera->normal = make_vector(ft_atof(norm_split[0]),
+	scene->camera->norm_rotation = make_vector(ft_atof(norm_split[0]),
 			ft_atof(norm_split[1]), ft_atof(norm_split[1]), 0.f);
 	scene->camera->fov = ft_atof(split[3]);
 	free_split(pos_split);

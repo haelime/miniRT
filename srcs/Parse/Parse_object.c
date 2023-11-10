@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Parse_object.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: hyunjunk <hyunjunk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 16:50:04 by hyunjunk          #+#    #+#             */
-/*   Updated: 2023/11/08 20:12:17 by haeem            ###   ########seoul.kr  */
+/*   Updated: 2023/11/10 17:07:42 by hyunjunk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	parse_sphere(char *line, t_scene *scene)
 	sphere->object.pos = make_vector(ft_atof(pos_split[0]),
 			ft_atof(pos_split[1]), ft_atof(pos_split[2]), 1.f);
 	sphere->radius = ft_atof(split[2]);
-	sphere->object.normal = make_vector(0.f, 0.f, -1.f, 0.f);
+	sphere->object.norm_rotation = make_vector(0.f, 0.f, -1.f, 0.f);
 	sphere->object.reachable_max_radius = sphere->radius;
 	sphere->object.get_hit = sphere_get_hit;
 	sphere->object.transform = sphere_transform;
@@ -117,7 +117,7 @@ void	parse_triangle(char *line, t_scene *scene)
 			make_vector(ft_atof(v1[0]), ft_atof(v2[0]), ft_atof(v3[0]), 1.f),
 			make_vector(ft_atof(v1[1]), ft_atof(v2[1]), ft_atof(v3[1]), 1.f),
 			make_vector(ft_atof(v1[2]), ft_atof(v2[2]), ft_atof(v3[2]), 1.f));
-	triangle->object.normal = vector_cross(
+	triangle->object.norm_rotation = vector_cross(
 			vector_sub(
 				make_vector(ft_atof(v2[0]), ft_atof(v2[1]), ft_atof(v2[2]), 1),
 				make_vector(ft_atof(v1[0]), ft_atof(v1[1]), ft_atof(v1[2]), 1)),
