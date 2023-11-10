@@ -6,7 +6,7 @@
 /*   By: hyunjunk <hyunjunk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 18:24:03 by hyunjunk          #+#    #+#             */
-/*   Updated: 2023/11/08 18:52:34 by hyunjunk         ###   ########.fr       */
+/*   Updated: 2023/11/10 20:51:37 by hyunjunk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,6 @@ t_vector	make_unit_vector(t_vector vector);
 t_vector	vector_sub(t_vector a, t_vector b);
 t_vector	pos_sub(t_vector a, t_vector b);
 t_vector	vector_cross(t_vector a, t_vector b);
+int			vector_length(t_vector vector);
 
 #endif // VECTOR_H

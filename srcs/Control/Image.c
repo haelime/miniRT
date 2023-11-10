@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   Image.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: hyunjunk <hyunjunk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 16:21:16 by haeem             #+#    #+#             */
-/*   Updated: 2023/11/08 20:45:06 by haeem            ###   ########seoul.kr  */
+/*   Updated: 2023/11/10 20:52:27 by hyunjunk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Image.h"
+#include "Scene.h"
 
 void	reset_img(t_img *img)
 {
@@ -42,7 +43,8 @@ void	make_image(t_img *img, t_mlx *mlx)
 	}
 	mlx_put_image_to_window(mlx->mlx, mlx->win, img->ptr, 0, 0);
 }
-void	draw_rt()
+
+void	draw_rt(t_scene* scene)
 {
 	t_mlx	mlx;
 	t_img	img;
@@ -54,6 +56,9 @@ void	draw_rt()
 			&img.endian);
 	// should put pixels on img.data
 	
+	//
+
+
 	make_image(&img, &mlx); // need another arg
 	// hooks(mlx.win, &img);
 	mlx_loop(mlx.mlx);

@@ -6,7 +6,7 @@
 /*   By: hyunjunk <hyunjunk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 16:50:04 by hyunjunk          #+#    #+#             */
-/*   Updated: 2023/11/10 17:07:42 by hyunjunk         ###   ########.fr       */
+/*   Updated: 2023/11/10 20:56:52 by hyunjunk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void	parse_sphere(char *line, t_scene *scene)
 	sphere->object.pos = make_vector(ft_atof(pos_split[0]),
 			ft_atof(pos_split[1]), ft_atof(pos_split[2]), 1.f);
 	sphere->radius = ft_atof(split[2]);
+	sphere->object.scene = scene;
 	sphere->object.norm_rotation = make_vector(0.f, 0.f, -1.f, 0.f);
 	sphere->object.reachable_max_radius = sphere->radius;
 	sphere->object.get_hit = sphere_get_hit;
@@ -64,11 +65,15 @@ static t_vector	get_barycentric_point(t_vector v1, t_vector v2, t_vector v3)
 	return (barycentric_point);
 }
 
-void	parse_triangle_rgb(t_triangle *triangle, char **sp)
+void	parse_triangle_rgb(t_triangle *triangle, char **sp, t_scene *scene)
 {
 	char	**rgb_split;
 
+	triangle->object.scene = scene;
 	rgb_split = ft_split(sp[4], ',');
+	if (rgb_split[0] == NULL || rgb_split[1] == NULL || rgb_split[2] == NULL
+		|| rgb_split[3] != NULL)
+		exit_parse(sp[4]);
 	triangle->object.color = make_vector(ft_atof(rgb_split[0]),
 			ft_atof(rgb_split[1]), ft_atof(rgb_split[2]), 1.f);
 	free_split(rgb_split);
@@ -87,6 +92,10 @@ void	set_triangle_element(
 	triangle->v[2] = pos_sub(
 			make_vector(ft_atof(v3[0]), ft_atof(v3[1]), ft_atof(v3[2]), 1.f),
 			triangle->object.pos);
+	triangle->object.reachable_max_radius = ft_max3f(
+			vector_length(triangle->v[0]),
+			vector_length(triangle->v[1]),
+			vector_length(triangle->v[2]));
 	triangle->object.get_hit = triangle_get_hit;
 	triangle->object.transform = triangle_transform;
 	free_split(v1);
@@ -125,7 +134,7 @@ void	parse_triangle(char *line, t_scene *scene)
 				make_vector(ft_atof(v3[0]), ft_atof(v3[1]), ft_atof(v3[2]), 1),
 				make_vector(ft_atof(v1[0]), ft_atof(v1[1]), ft_atof(v1[2]), 1))
 			);
-	parse_triangle_rgb(triangle, sp);
+	parse_triangle_rgb(triangle, sp, scene);
 	set_triangle_element(triangle, v1, v2, v3);
 	add_object(scene, (t_object *)triangle);
 }

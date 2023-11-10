@@ -1,25 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Sphere.c                                           :+:      :+:    :+:   */
+/*   Vector2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyunjunk <hyunjunk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/08 19:43:42 by hyunjunk          #+#    #+#             */
-/*   Updated: 2023/11/10 20:57:48 by hyunjunk         ###   ########.fr       */
+/*   Created: 2023/11/08 17:45:06 by hyunjunk          #+#    #+#             */
+/*   Updated: 2023/11/10 20:51:25 by hyunjunk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Sphere.h"
+#include <math.h>
+#include "Vector.h"
 
-t_hit	sphere_get_hit(t_vector	*ray, t_vector	*origin)
+int	vector_length(t_vector vector)
 {
-	t_hit	hit;
-
-	return (hit);
-}
-
-void	sphere_transform(t_matrix *matrix)
-{
-	return ;
+	return (sqrt(
+			vector.x * vector.x
+			+ vector.y * vector.y
+			+ vector.z * vector.z));
 }

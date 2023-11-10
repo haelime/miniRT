@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Image.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: hyunjunk <hyunjunk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 16:08:31 by haeem             #+#    #+#             */
-/*   Updated: 2023/11/08 20:35:08 by haeem            ###   ########seoul.kr  */
+/*   Updated: 2023/11/10 20:42:17 by hyunjunk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,6 @@ typedef struct s_mlx
 }t_mlx;
 
 void	reset_img(t_img *img);
-void	draw_rt();
+void	draw_rt(t_scene* scene);
 
 #endif

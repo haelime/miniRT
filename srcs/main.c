@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: hyunjunk <hyunjunk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 19:50:50 by haeem             #+#    #+#             */
-/*   Updated: 2023/11/08 20:37:52 by haeem            ###   ########seoul.kr  */
+/*   Updated: 2023/11/10 20:41:57 by hyunjunk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	main(int argc, char **argv)
 	if (argc == 3 && ft_strcmp(argv[1], "--save") == 0);
 		// TODO
 	parse(argv[1], &scene);
-	draw_rt();
+	draw_rt(&scene);
 	return (0);
 }
 

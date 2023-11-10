@@ -6,7 +6,7 @@
 #    By: hyunjunk <hyunjunk@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/11 14:22:09 by haeem             #+#    #+#              #
-#    Updated: 2023/11/10 15:51:55 by hyunjunk         ###   ########.fr        #
+#    Updated: 2023/11/10 20:52:27 by hyunjunk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,7 @@ main.c\
 Control/Scene.c\
 Control/Image.c\
 Graphics/Vector.c\
+Graphics/Vector2.c\
 Graphics/Sphere.c\
 Graphics/Triangle.c\
 main.c\
