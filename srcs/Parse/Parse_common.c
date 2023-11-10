@@ -6,7 +6,7 @@
 /*   By: hyunjunk <hyunjunk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 20:17:49 by hyunjunk          #+#    #+#             */
-/*   Updated: 2023/11/08 18:18:18 by hyunjunk         ###   ########.fr       */
+/*   Updated: 2023/11/10 15:21:55 by hyunjunk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ void	parse_light(char *line, t_scene *scene)
 	light->intensity = ft_atof(split[2]);
 	light->color = make_vector(ft_atof(rgb_split[0]),
 			ft_atof(rgb_split[1]), ft_atof(rgb_split[2]), 1.f);
-	scene->lights[scene->light_num++] = *light;
+	add_light(scene, light);
 	free_split(pos_split);
 	free_split(rgb_split);
 	free_split(split);
