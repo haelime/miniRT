@@ -6,7 +6,7 @@
 /*   By: hyunjunk <hyunjunk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 15:41:30 by hyunjunk          #+#    #+#             */
-/*   Updated: 2023/11/14 21:55:38 by hyunjunk         ###   ########.fr       */
+/*   Updated: 2023/11/14 22:09:47 by hyunjunk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,16 +33,37 @@ void	transpose(t_matrix *mat)
 void	transform(t_vector *dst, const t_vector *src, const t_matrix *mat_tr)
 {
 	t_avx		y;
+	t_sse		x;
 
-	y.ymm0 = _mm256_broadcast_ps((__m128 *)&src->m[0][0]);
+/*
+    __asm {
+        mov             edi, dst
+        mov             esi, src
+        mov             eax, mat_tr
+
+        vbroadcastf128  ymm0, [esi];                    ymm0 = { x, y, z, w, x, y, z, w }
+        vmovups         ymm1, [eax];                    ymm1 = { x0, y0, z0, w0, x1, y1, z1, w1 }
+        vmovups         ymm2, [eax + 32];               ymm2 = { x2, y2, z2, w2, x3, y3, z3, w3 }
+
+        vdpps           ymm1, ymm0, ymm1, 11110001b;    ymm1 = { s0, 0, 0, 0, s1, 0, 0, 0 }
+        vdpps           ymm2, ymm0, ymm2, 11110001b;    ymm2 = { s2, 0, 0, 0, s3, 0, 0, 0 }
+
+        vpermq          ymm1, ymm1, 11111000b;          xmm1 = { s0, 0, s1, 0 }
+        vpermq          ymm2, ymm2, 11111000b;          xmm2 = { s2, 0, s3, 0 }
+        shufps          xmm1, xmm2, 10001000b;          xmm1 = { s0, s1, s2, s3 }
+
+        movups          [edi], xmm1
+    } */
+	y.ymm0 = _mm256_broadcast_ps((__m128 *)&src->x);
 	y.ymm1 = _mm256_load_ps(&mat_tr->m[0][0]);
 	y.ymm2 = _mm256_load_ps(&mat_tr->m[2][0]);
-	y.ymm3 = _mm256_dp_ps(y.ymm0, y.ymm1, 0xf1);
-	y.ymm4 = _mm256_dp_ps(y.ymm0, y.ymm2, 0xf1);
-	y.ymm5 = _mm256_permute2f128_ps(y.ymm3, y.ymm4, 0x20);
-	y.ymm6 = _mm256_permute2f128_ps(y.ymm3, y.ymm4, 0x31);
-	y.ymm7 = _mm256_shuffle_ps(y.ymm5, y.ymm6, 0x88);
-	_mm256_store_ps(&dst->m[0][0], y.ymm7);
+	y.ymm1 = _mm256_dp_ps(y.ymm0, y.ymm1, 0xf1);
+	y.ymm2 = _mm256_dp_ps(y.ymm0, y.ymm2, 0xf1);
+	y.ymm1 = _mm256_permute2f128_ps(y.ymm1, y.ymm1, 0xf8);
+	y.ymm2 = _mm256_permute2f128_ps(y.ymm2, y.ymm2, 0xf8);
+	x.xmm1 = _mm_shuffle_ps(_mm256_extractf128_ps(y.ymm1, 0),
+			_mm256_extractf128_ps(y.ymm2, 0), 0x88);
+	_mm_store_ps(&dst->x, x.xmm1);
 }
 
 void	concatenate(t_matrix *dst, const t_matrix *m0, const t_matrix *m1_tr)

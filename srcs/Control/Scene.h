@@ -6,7 +6,7 @@
 /*   By: hyunjunk <hyunjunk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 19:24:29 by hyunjunk          #+#    #+#             */
-/*   Updated: 2023/11/14 21:34:08 by hyunjunk         ###   ########.fr       */
+/*   Updated: 2023/11/14 22:00:53 by hyunjunk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ typedef struct s_scene
 	t_vector	resolution;
 }				t_scene;
 
-void	render_scene(t_scene *scene, t_control_block *cb, t_img *img);
+void	render_scene(t_scene *scene, t_img *img, int is_debug_mode);
 
 void	add_object(t_scene *scene, t_object *object);
 void	add_light(t_scene *scene, t_light *light);

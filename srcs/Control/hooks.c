@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: hyunjunk <hyunjunk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 22:00:13 by haeem             #+#    #+#             */
-/*   Updated: 2023/11/14 16:47:17 by haeem            ###   ########seoul.kr  */
+/*   Updated: 2023/11/14 22:03:56 by hyunjunk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,8 @@ void keypressed(int keycode, void *param)
 	// make_image(((t_map *)param)->img, (t_map *)param);
 }
 
-void hooks(void *win, t_img *img, t_map *map)
-{
-	mlx_hook(win, KEYPRESS, 1L << 0, (void *)keypressed, map);
-	mlx_hook(win, 17, 0, (void *)exit, (0));
-}
+// void hooks(void *win, t_img *img, t_map *map)
+// {
+// 	mlx_hook(win, KEYPRESS, 1L << 0, (void *)keypressed, map);
+// 	mlx_hook(win, 17, 0, (void *)exit, (0));
+// }
