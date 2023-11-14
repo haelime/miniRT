@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ControlBlock.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: hyunjunk <hyunjunk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 18:32:58 by haeem             #+#    #+#             */
-/*   Updated: 2023/11/14 18:48:00 by haeem            ###   ########seoul.kr  */
+/*   Updated: 2023/11/14 19:31:54 by hyunjunk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ControlBlock.h"
 
-void	loop_rt(t_control_block* cb)
+void	loop_rt(t_control_block *cb)
 {
 	cb->mlx.mlx = mlx_init();
 	cb->mlx.win = mlx_new_window(cb->mlx.mlx, WIN_WIDTH, WIN_HEIGHT, "miniRT");

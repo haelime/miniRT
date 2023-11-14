@@ -6,7 +6,7 @@
 /*   By: hyunjunk <hyunjunk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 18:26:15 by hyunjunk          #+#    #+#             */
-/*   Updated: 2023/11/10 16:18:06 by hyunjunk         ###   ########.fr       */
+/*   Updated: 2023/11/14 19:32:43 by hyunjunk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 typedef struct s_matrix
 {
-	__attribute__((aligned(32)))
+	__attribute__((aligned(64)))
 	float		m[4][4];
 }				t_matrix;
 
