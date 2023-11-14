@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Parse_object.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: hyunjunk <hyunjunk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 16:50:04 by hyunjunk          #+#    #+#             */
-/*   Updated: 2023/11/14 18:48:00 by haeem            ###   ########seoul.kr  */
+/*   Updated: 2023/11/14 20:05:22 by hyunjunk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,7 @@ void	parse_sphere(char *line, t_scene *scene)
 	sphere->object.scene = scene;
 	sphere->object.norm_rotation = make_vector(0.f, 0.f, -1.f, 0.f);
 	sphere->object.reachable_max_radius = sphere->radius;
-	sphere->object.get_hit = sphere_get_hit;
-	sphere->object.transform = sphere_transform;3
+	sphere_func_init(sphere);
 	sphere->object.color = make_vector(ft_atof(rgb_split[0]),
 			ft_atof(rgb_split[1]), ft_atof(rgb_split[2]), 1.f);
 	add_object(scene, (t_object *)sphere);
@@ -96,8 +95,7 @@ void	set_triangle_element(
 			vector_length(triangle->v[0]),
 			vector_length(triangle->v[1]),
 			vector_length(triangle->v[2]));
-	triangle->object.get_hit = triangle_get_hit;
-	triangle->object.transform = triangle_transform;
+	triangle_func_init(triangle);
 	free_split(v1);
 	free_split(v2);
 	free_split(v3);

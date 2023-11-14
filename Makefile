@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+         #
+#    By: hyunjunk <hyunjunk@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/11 14:22:09 by haeem             #+#    #+#              #
-#    Updated: 2023/11/14 18:38:22 by haeem            ###   ########seoul.kr   #
+#    Updated: 2023/11/14 21:58:03 by hyunjunk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,13 +25,16 @@ MLX_NAME = mlx
 MLX_DIR = ./mlx
 
 SOURCES = $(addprefix $(CURDIR)/srcs/,\
-main.c\
-Control/Scene.c\
+Control/ControlBlock.c\
+Control/hooks.c\
 Control/Image.c\
-Graphics/Vector.c\
-Graphics/Vector2.c\
+Control/Scene.c\
+Graphics/Matrix.c\
 Graphics/Sphere.c\
 Graphics/Triangle.c\
+Graphics/Vector.c\
+Graphics/Vector2.c\
+Graphics/Vector3.c\
 main.c\
 Parse/Parse.c\
 Parse/Parse_common.c\

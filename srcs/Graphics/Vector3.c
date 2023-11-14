@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ControlBlock.h                                     :+:      :+:    :+:   */
+/*   Vector3.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyunjunk <hyunjunk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/14 18:32:58 by haeem             #+#    #+#             */
-/*   Updated: 2023/11/14 21:34:00 by hyunjunk         ###   ########.fr       */
+/*   Created: 2023/11/08 17:45:06 by hyunjunk          #+#    #+#             */
+/*   Updated: 2023/11/14 21:53:22 by hyunjunk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONTROLBLOCK_H
-# define CONTROLBLOCK_H
+#include <math.h>
+#include "Matrix.h"
 
-# include "mlx.h"
-# include "Image.h"
-# include "Scene.h"
-
-typedef struct s_control_block
+t_vector	pos_add(t_vector a, t_vector b)
 {
-	t_mlx	mlx;
-	t_img	img;
-	t_scene	scene;
-}t_control_block;
+	t_vector	ret;
 
-void	loop_rt(t_control_block *cb);
-
-#endif
+	ret.x = a.x + b.x;
+	ret.y = a.y + b.y;
+	ret.z = a.z + b.z;
+	ret.w = 1.f;
+	return (ret);
+}

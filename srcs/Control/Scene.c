@@ -3,15 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   Scene.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: hyunjunk <hyunjunk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 17:39:21 by hyunjunk          #+#    #+#             */
-/*   Updated: 2023/11/14 18:39:51 by haeem            ###   ########seoul.kr  */
+/*   Updated: 2023/11/14 21:34:31 by hyunjunk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Scene.h"
 #include "libft.h"
+
+void	render_scene(t_scene *scene, t_control_block *cb, t_img *img)
+{
+
+}
 
 void	add_object(t_scene *scene, t_object *object)
 {

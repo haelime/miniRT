@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Scene.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: hyunjunk <hyunjunk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 19:24:29 by hyunjunk          #+#    #+#             */
-/*   Updated: 2023/11/14 18:42:50 by haeem            ###   ########seoul.kr  */
+/*   Updated: 2023/11/14 21:34:08 by hyunjunk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@
 # include "Light.h"
 # include "Camera.h"
 
-typedef struct s_object t_object;
+typedef struct s_control_block	t_control_block;
+
+typedef struct s_object	t_object;
 typedef struct s_scene
 {
 	t_object	**objects;
@@ -35,6 +37,8 @@ typedef struct s_scene
 	t_camera	*camera;
 	t_vector	resolution;
 }				t_scene;
+
+void	render_scene(t_scene *scene, t_control_block *cb, t_img *img);
 
 void	add_object(t_scene *scene, t_object *object);
 void	add_light(t_scene *scene, t_light *light);
