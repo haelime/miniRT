@@ -1,25 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Parse.h                                            :+:      :+:    :+:   */
+/*   ControlBlock.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/06 19:50:02 by hyunjunk          #+#    #+#             */
-/*   Updated: 2023/11/14 18:40:45 by haeem            ###   ########seoul.kr  */
+/*   Created: 2023/11/14 18:32:58 by haeem             #+#    #+#             */
+/*   Updated: 2023/11/14 18:39:28 by haeem            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSE_H
-# define PARSE_H
+#ifndef CONTROL_BLOCK_H
+# define CONTROL_BLOCK_H
 
+# include "mlx.h"
+# include "Image.h"
 # include "Scene.h"
 
-void	parse(char *file, t_scene *scene);
+typedef struct s_control_block
+{
+	t_mlx	mlx;
+	t_img	img;
+	t_scene	scene;
+}t_control_block;
 
-void	exit_parse(char *line);
-void	free_split(char **split);
-float	ft_max3f(float a, float b, float c);
-float	ft_atof(const char *str);
+void	loop_rt(t_control_block* cb);
 
-#endif /* PARSE_H */
+#endif

@@ -3,23 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunjunk <hyunjunk@student.42.fr>          +#+  +:+       +#+        */
+/*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 19:50:50 by haeem             #+#    #+#             */
-/*   Updated: 2023/11/10 20:41:57 by hyunjunk         ###   ########.fr       */
+/*   Updated: 2023/11/14 18:41:56 by haeem            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-#include "../includes/minirt.h"
-#include "../libft/includes/libft.h"
+#include "libft.h"
 #include "Parse.h"
-#include "Control/Image.h"
-
+#include "Image.h"
+#include "ControlBlock.h"
 
 int	main(int argc, char **argv)
 {
-	static t_scene	scene;
+	static t_control_block	cb;
 
 	if ((argc != 2 && argc != 3)
 		|| (argc == 3 && ft_strcmp(argv[1], "--save") != 0))
@@ -29,8 +28,8 @@ int	main(int argc, char **argv)
 	}
 	if (argc == 3 && ft_strcmp(argv[1], "--save") == 0);
 		// TODO
-	parse(argv[1], &scene);
-	draw_rt(&scene);
+	parse(argv[1], &cb.scene);
+	loop_rt(&cb);
 	return (0);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Parse_object.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunjunk <hyunjunk@student.42.fr>          +#+  +:+       +#+        */
+/*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 16:50:04 by hyunjunk          #+#    #+#             */
-/*   Updated: 2023/11/10 20:56:52 by hyunjunk         ###   ########.fr       */
+/*   Updated: 2023/11/14 18:48:00 by haeem            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	parse_sphere(char *line, t_scene *scene)
 	sphere->object.norm_rotation = make_vector(0.f, 0.f, -1.f, 0.f);
 	sphere->object.reachable_max_radius = sphere->radius;
 	sphere->object.get_hit = sphere_get_hit;
-	sphere->object.transform = sphere_transform;
+	sphere->object.transform = sphere_transform;3
 	sphere->object.color = make_vector(ft_atof(rgb_split[0]),
 			ft_atof(rgb_split[1]), ft_atof(rgb_split[2]), 1.f);
 	add_object(scene, (t_object *)sphere);
