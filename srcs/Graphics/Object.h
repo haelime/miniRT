@@ -6,7 +6,7 @@
 /*   By: hyunjunk <hyunjunk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 18:19:40 by hyunjunk          #+#    #+#             */
-/*   Updated: 2023/11/14 21:53:52 by hyunjunk         ###   ########.fr       */
+/*   Updated: 2023/11/15 17:39:05 by hyunjunk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "Vector.h"
 # include "Matrix.h"
-# include "Scene.h"
+# include "Ray.h"
 
 typedef struct s_hit	t_hit;
 typedef struct s_scene	t_scene;
@@ -26,15 +26,17 @@ typedef struct s_object
 	t_scene		*scene;
 	t_vector	norm_rotation;
 	t_vector	pos;
+	t_vector	view_pos;
 	t_vector	color;
+	float		reflect_ratio;
 	float		reachable_max_radius;
-	t_hit		((*intersect)(
-			t_object * this,
-			t_vector origin, t_vector ray, t_matrix * tr_view_mat));
+	t_hit		((*intersect)(t_object * this, t_ray ray, int recursion_num));
 	void		((*update_rotation)(t_object *this, t_vector rot));
 	void		((*update_pos)(t_object *this, t_vector pos));
+	void		((*update_view_mat)(t_object *this, t_matrix *tr_view_mat));
 	t_matrix	tr_rot_mat;
 	t_matrix	tr_pos_mat;
+	t_matrix	tr_view_mat;
 }	t_object;
 
 typedef struct s_hit {
@@ -42,6 +44,9 @@ typedef struct s_hit {
 	t_vector	color;
 	t_vector	normal;
 	float		distance;
+	t_object	*obj;
 }				t_hit;
+
+t_vector	make_reflect_ray(t_hit hit, t_vector ray);
 
 #endif // OBJECT_H

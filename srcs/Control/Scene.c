@@ -6,7 +6,7 @@
 /*   By: hyunjunk <hyunjunk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 17:39:21 by hyunjunk          #+#    #+#             */
-/*   Updated: 2023/11/14 22:23:13 by hyunjunk         ###   ########.fr       */
+/*   Updated: 2023/11/15 22:10:10 by hyunjunk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,39 @@
 
 #include <stdio.h> //DEBUG //TODO: remove
 
+t_hit	compute_reflect_recursive(
+		t_scene *scene, t_hit hit, t_ray hit_ray, int recursion_num)
+{
+	t_hit		reflect_hit;
+	t_hit		tmp;
+	t_ray		reflect;
+	int			i;
+
+	reflect_hit.distance = -1.f;
+	if (recursion_num <= 0)
+		return (reflect_hit);
+	reflect.dir = vector_normalize(vector_sub(
+				hit_ray.dir, scalar_mul(2.f
+					* vector_dot(hit_ray.dir, hit.normal), hit.normal)));
+	reflect.origin = pos_add(hit_ray.origin, scalar_mul(0.001, reflect.dir));
+	i = -1;
+	while (++i < scene->object_num)
+	{
+		tmp = scene->objects[i]->intersect(
+				scene->objects[i], reflect, recursion_num - 1);
+		if (tmp.distance >= 0.f && (reflect_hit.distance < 0.f
+				|| tmp.distance < reflect_hit.distance))
+			reflect_hit = tmp;
+	}
+	return (reflect_hit);
+}
+
+int		clamp255(int x) {
+	if (x > 255)
+		return 255;
+	return x;
+}
+
 void	render_scene(t_scene *scene, t_img *img, int is_debug_mode)
 {
 	int			x;
@@ -30,38 +63,48 @@ void	render_scene(t_scene *scene, t_img *img, int is_debug_mode)
 	y = -1;
 	while (++y < IMG_HEIGHT)
 	{
+		printf("%d\n", y);
 		x = -1;
 		while (++x < IMG_WIDTH)
 		{
-			origin = make_vector(0.f, 0.f, 0.f, 0.f);
+			// origin on screen
+			origin = make_vector(
+				((float)x / (float)IMG_WIDTH * 2.f - 1.f) * ((float)IMG_WIDTH / (float)IMG_HEIGHT),
+				(float)y / (float)IMG_HEIGHT * 2.f - 1.f,
+				1.f/tanf(scene->camera->fov / 2), 1.f);
+			// ray direction
 			ray = make_vector(
-				(float)x - IMG_WIDTH/ 2.f,
-				(float)y - IMG_HEIGHT / 2.f,
-				(float)IMG_WIDTH / (2.f * tanf(scene->camera->fov / 2.f)),
-				1.f);
+				origin.x, origin.y, 1.f, 0.f);
 			ray = vector_normalize(ray);
+
+			
+
 			for (int i = 0; i < scene->object_num; i++)
 			{
-				t_matrix tmp;
-				make_diagonal_matrix(&tmp, make_vector(1.f, 1.f, 1.f, 1.f));
+				//DEBUG
+				t_matrix tmp_tr_camera;
+				make_diagonal_matrix(&tmp_tr_camera, make_vector(1.f, 1.f, 1.f, 1.f));
+				for (int j = 0; j < scene->object_num; j++) {
+					scene->objects[j]->update_view_mat(scene->objects[j], &tmp_tr_camera);
+					scene->objects[j]->reflect_ratio = 0.5f;
+				}
+
 				hit = scene->objects[i]->intersect(
-					scene->objects[i], origin, ray, &tmp);
+					scene->objects[i], make_ray(origin, ray), 2);
 				if (hit.distance >= 0.f)
-					break ;
+					break;
 			}
+
 			//printf("distance = %f\n", hit.distance);
 			if (hit.distance <= 0.f) {
-				img->data[x + y * IMG_WIDTH] = 120;
+				img->data[x + y * IMG_WIDTH] = 255;
 			}
 			else
 			{
-				img->data[x + y * IMG_WIDTH] = (int)hit.color.x | (int)hit.color.y << 8 | (int)hit.color.z << 16 | 0xFF << 24; 
+				img->data[x + y * IMG_WIDTH] = (clamp255((int)hit.color.x) | clamp255((int)hit.color.y) << 8 | clamp255((int)hit.color.z) << 16) & 0x00FFFFFF;
 			}
 		}
 	}
-	img->data[100] = 0xFFFFFFFF;
-	img->data[101] = 0xFFFFFFFF;
-	img->data[102] = 0xFFFFFFFF;
 	printf("end\n");
 }
 

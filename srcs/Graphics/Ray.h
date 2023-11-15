@@ -1,43 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Image.h                                            :+:      :+:    :+:   */
+/*   Ray.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyunjunk <hyunjunk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/08 16:08:31 by haeem             #+#    #+#             */
-/*   Updated: 2023/11/15 18:46:10 by hyunjunk         ###   ########.fr       */
+/*   Created: 2023/11/15 17:07:54 by hyunjunk          #+#    #+#             */
+/*   Updated: 2023/11/15 17:34:11 by hyunjunk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef IMAGE_H
-# define IMAGE_H
+#ifndef RAY_H
+# define RAY_H
 
-# include "mlx.h"
+# include "Vector.h"
 
-# define WIN_WIDTH 2560
-# define WIN_HEIGHT 1300
-
-# define IMG_WIDTH 1920
-# define IMG_HEIGHT 1060
-
-typedef struct s_img
+typedef struct s_ray
 {
-	void	*ptr;
-	int		*data;
-	int		size_l;
-	int		bpp;
-	int		endian;
-	int		width_max;
-	int		height_max;
-}t_img;
+	t_vector		origin;
+	t_vector		dir;
+}				t_ray;
 
-typedef struct s_mlx
-{
-	void	*mlx;
-	void	*win;
-}t_mlx;
-
-void	reset_img(t_img *img);
+t_ray	make_ray(t_vector origin, t_vector dir);
 
 #endif

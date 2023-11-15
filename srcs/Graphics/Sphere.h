@@ -6,7 +6,7 @@
 /*   By: hyunjunk <hyunjunk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 15:53:22 by hyunjunk          #+#    #+#             */
-/*   Updated: 2023/11/14 21:40:17 by hyunjunk         ###   ########.fr       */
+/*   Updated: 2023/11/15 17:39:35 by hyunjunk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ typedef struct s_sphere
 
 void	sphere_func_init(t_sphere *this);
 
-t_hit	sphere_intersect(t_object *this,
-			t_vector	origin, t_vector	ray, t_matrix *tr_view_mat);
+t_hit	sphere_intersect(t_object *this, t_ray ray, int recursion_num);
 void	sphere_update_rotation(t_object *this, t_vector rot);
 void	sphere_update_pos(t_object *this, t_vector pos);
+void	sphere_update_view_mat(t_object *this, t_matrix *tr_view_mat);
 
 #endif

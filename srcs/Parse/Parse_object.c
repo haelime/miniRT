@@ -6,7 +6,7 @@
 /*   By: hyunjunk <hyunjunk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 16:50:04 by hyunjunk          #+#    #+#             */
-/*   Updated: 2023/11/14 20:05:22 by hyunjunk         ###   ########.fr       */
+/*   Updated: 2023/11/15 18:03:35 by hyunjunk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 #include "get_next_line_bonus.h"
 #include "Sphere.h"
 #include "Triangle.h"
+
+#include <stdio.h> // DEBUG
 
 /* 구
  sp	0.0,0.0,20.6	12.6	10,0,255
@@ -51,6 +53,7 @@ void	parse_sphere(char *line, t_scene *scene)
 			ft_atof(rgb_split[1]), ft_atof(rgb_split[2]), 1.f);
 	add_object(scene, (t_object *)sphere);
 	free_split(pos_split);
+	printf("malloc shpere %p\n", sphere);
 }
 
 static t_vector	get_barycentric_point(t_vector v1, t_vector v2, t_vector v3)

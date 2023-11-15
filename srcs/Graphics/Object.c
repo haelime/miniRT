@@ -1,43 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Image.h                                            :+:      :+:    :+:   */
+/*   Object.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyunjunk <hyunjunk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/08 16:08:31 by haeem             #+#    #+#             */
-/*   Updated: 2023/11/15 18:46:10 by hyunjunk         ###   ########.fr       */
+/*   Created: 2023/11/15 17:00:40 by hyunjunk          #+#    #+#             */
+/*   Updated: 2023/11/15 17:36:48 by hyunjunk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef IMAGE_H
-# define IMAGE_H
+#include "Object.h"
 
-# include "mlx.h"
-
-# define WIN_WIDTH 2560
-# define WIN_HEIGHT 1300
-
-# define IMG_WIDTH 1920
-# define IMG_HEIGHT 1060
-
-typedef struct s_img
+t_vector	make_reflect_ray(t_hit hit, t_vector ray)
 {
-	void	*ptr;
-	int		*data;
-	int		size_l;
-	int		bpp;
-	int		endian;
-	int		width_max;
-	int		height_max;
-}t_img;
+	t_vector	reflect_ray;
 
-typedef struct s_mlx
-{
-	void	*mlx;
-	void	*win;
-}t_mlx;
-
-void	reset_img(t_img *img);
-
-#endif
+	reflect_ray = vector_normalize(
+			vector_sub(ray,
+				scalar_mul(2.f * vector_dot(ray, hit.normal), hit.normal)));
+	return (reflect_ray);
+}

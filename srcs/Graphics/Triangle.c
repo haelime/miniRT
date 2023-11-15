@@ -6,7 +6,7 @@
 /*   By: hyunjunk <hyunjunk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 19:44:39 by hyunjunk          #+#    #+#             */
-/*   Updated: 2023/11/14 21:55:09 by hyunjunk         ###   ########.fr       */
+/*   Updated: 2023/11/15 16:43:24 by hyunjunk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	triangle_func_init(t_triangle *this)
 {
-	this->object.intersect = triangle_intersect;
-	this->object.update_rotation = triangle_update_rotation;
-	this->object.update_pos = triangle_update_pos;
+	// this->object.intersect = triangle_intersect;
+	// this->object.update_rotation = triangle_update_rotation;
+	// this->object.update_pos = triangle_update_pos;
 }
 
 t_hit	triangle_intersect(t_object *this,
