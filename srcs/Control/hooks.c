@@ -3,68 +3,87 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunjunk <hyunjunk@student.42.fr>          +#+  +:+       +#+        */
+/*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 22:00:13 by haeem             #+#    #+#             */
-/*   Updated: 2023/11/14 22:03:56 by hyunjunk         ###   ########.fr       */
+/*   Updated: 2023/11/20 19:16:15 by haeem            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../mlx/mlx.h"
-#include "../../includes/macros.h"
 #include <stdlib.h>
+#include "macros.h"
+#include "mlx.h"
+#include "ControlBlock.h"
 
-int exit_rt(void *param)
+void	keypressed_debug(int keycode, void *param)
 {
-	exit(0);
-	return (0);
-}
+	t_control_block	*cb;
 
-void keypressed3(int keycode, void *param)
-{
-	if (keycode == KEY_P)
-	{
-	}
-	if (keycode == KEY_O)
-	{
-	}
-}
-
-void keypressed2(int keycode, void *param)
-{
-	if (keycode == KEY_E)
-		;
+	cb = (t_control_block *)param;
 	if (keycode == KEY_R)
-		;
-	if (keycode == KEY_F)
-		;
-	if (keycode == KEY_T)
-		;
-	if (keycode == KEY_G)
-		;
-	if (keycode == KEY_Z)
-		;
-	if (keycode == KEY_X)
-		;
+	{
+		cb->is_debug ^= true;
+	}
+	else
+		return ;
+	render_scene(&cb->scene, &cb->img, (int)cb->is_debug);
 }
 
-void keypressed(int keycode, void *param)
+void	keypressed_rotation(int keycode, void *param)
 {
-	if (keycode == KEY_ESCAPE)
-		exit_rt(param);
-	// if (keycode == KEY_W)
-	// if (keycode == KEY_S)
-	// if (keycode == KEY_A)
-	// if (keycode == KEY_D)
-	// if (keycode == KEY_Q)
+	t_control_block	*cb;
 
-	// keypressed2(keycode, param);
-	// keypressed3(keycode, param);
-	// make_image(((t_map *)param)->img, (t_map *)param);
+	cb = (t_control_block *)param;
+	if (keycode == KEY_UP)
+		cb->scene.camera->norm_rotation.x -= 0.1;
+	else if (keycode == KEY_DOWN)
+		cb->scene.camera->norm_rotation.x += 0.1;
+	else if (keycode == KEY_LEFT)
+		cb->scene.camera->norm_rotation.y -= 0.1;
+	else if (keycode == KEY_RIGHT)
+		cb->scene.camera->norm_rotation.y += 0.1;
+	else if (keycode == KEY_Q)
+		cb->scene.camera->norm_rotation.z += 0.1;
+	else if (keycode == KEY_E)
+		cb->scene.camera->norm_rotation.z -= 0.1;
+	else
+	{
+		keypressed_debug(keycode, param);
+		return ;
+	}
+	render_scene(&cb->scene, &cb->img, (int)cb->is_debug);
 }
 
-// void hooks(void *win, t_img *img, t_map *map)
-// {
-// 	mlx_hook(win, KEYPRESS, 1L << 0, (void *)keypressed, map);
-// 	mlx_hook(win, 17, 0, (void *)exit, (0));
-// }
+void	keypressed(int keycode, void *param)
+{
+	t_control_block	*cb;
+
+	cb = (t_control_block *)param;
+	if (keycode == KEY_ESCAPE)
+		exit(0);
+	else if (keycode == KEY_W)
+		cb->scene.camera->pos.z += 10;
+	else if (keycode == KEY_S)
+		cb->scene.camera->pos.z -= 10;
+	else if (keycode == KEY_A)
+		cb->scene.camera->pos.x -= 10;
+	else if (keycode == KEY_D)
+		cb->scene.camera->pos.z += 10;
+	else if (keycode == KEY_SPACEBAR)
+		cb->scene.camera->pos.y += 10;
+	else if (keycode == KEY_SHIFT_LEFT)
+		cb->scene.camera->pos.y -= 10;
+	else
+	{
+		keypressed_rotation(keycode, param);
+		return ;
+	}
+	render_scene(&cb->scene, &cb->img, (int)cb->is_debug);
+}
+
+void	hooks(t_control_block *cb)
+{
+	cb->scene.camera->pos;
+	mlx_hook(cb->mlx.win, KEYPRESS, 1L << 0, (void *)keypressed, cb);
+	mlx_hook(cb->mlx.win, 17, 0, (void *)exit, (0));
+}

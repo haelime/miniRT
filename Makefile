@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hyunjunk <hyunjunk@student.42.fr>          +#+  +:+       +#+         #
+#    By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/11 14:22:09 by haeem             #+#    #+#              #
-#    Updated: 2023/11/20 15:32:20 by hyunjunk         ###   ########.fr        #
+#    Updated: 2023/11/20 19:10:49 by haeem            ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,8 +54,7 @@ OBJECTS = $(SOURCES:.c=.o)
 # BONUSOBJECTS = $(BONUSES:.c=.o)
 ALLOBJECTS = $(SOURCES:.c=.o) $(BONUSES:.c=.o)
 
-HEADER = -I./includes\
--I./srcs/Control\
+HEADER = -I./srcs/Control\
 -I./srcs/Graphics\
 -I./srcs/Parse\
 -I./libft/includes\
@@ -77,7 +76,7 @@ all: $(NAME)
 # 	@make WITH_BONUS=1 all
 
 %.o: %.c
-	@$(CC) $(CFLAGS) -c $< -o $@ -I $(HDR) -I $(MLX_DIR) -I $(LIBFTDIR)
+	@$(CC) $(CFLAGS) -c $< -o $@ $(HDR) -I $(MLX_DIR) -I $(LIBFTDIR)
 
 $(NAME): $(OBJ)
 	@$(MAKE) -C $(LIBFTDIR) all

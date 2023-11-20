@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ControlBlock.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunjunk <hyunjunk@student.42.fr>          +#+  +:+       +#+        */
+/*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 18:32:58 by haeem             #+#    #+#             */
-/*   Updated: 2023/11/14 22:03:37 by hyunjunk         ###   ########.fr       */
+/*   Updated: 2023/11/20 18:39:05 by haeem            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,6 @@ void	loop_rt(t_control_block *cb)
 	reset_img(&cb->img);
 	render_scene(&cb->scene, &cb->img, 0);
 	mlx_put_image_to_window(cb->mlx.mlx, cb->mlx.win, cb->img.ptr, 0, 0);
-	//hooks(cb->mlx.win, &cb->img);
+	hooks(cb);
 	mlx_loop(cb->mlx.mlx);
 }
