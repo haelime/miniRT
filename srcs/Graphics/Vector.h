@@ -6,7 +6,7 @@
 /*   By: hyunjunk <hyunjunk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 18:24:03 by hyunjunk          #+#    #+#             */
-/*   Updated: 2023/11/14 21:53:08 by hyunjunk         ###   ########.fr       */
+/*   Updated: 2023/11/20 15:51:17 by hyunjunk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,6 @@ t_vector	vector_cross(t_vector a, t_vector b);
 float		vector_length(t_vector vector);
 float		vector_dot(t_vector a, t_vector b);
 t_vector	vector_normalize(t_vector x);
+t_vector	vector_clamp(t_vector a, float min, float max);
 
 #endif // VECTOR_H

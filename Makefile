@@ -6,13 +6,13 @@
 #    By: hyunjunk <hyunjunk@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/11 14:22:09 by haeem             #+#    #+#              #
-#    Updated: 2023/11/15 19:56:56 by hyunjunk         ###   ########.fr        #
+#    Updated: 2023/11/20 15:32:20 by hyunjunk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 CC = cc
-CFLAGS = -Wall -Wextra -mavx2 -O3 -fsanitize=address #werror
+CFLAGS = -Wall -Wextra -mavx2 -o3 -fsanitize=address #werror
 SRCDIR = $(CURDIR)
 
 NAME = miniRT
@@ -33,6 +33,7 @@ Graphics/Matrix.c\
 Graphics/Object.c\
 Graphics/Ray.c\
 Graphics/Sphere.c\
+Graphics/SphereTraceRay.c\
 Graphics/Triangle.c\
 Graphics/Vector.c\
 Graphics/Vector2.c\

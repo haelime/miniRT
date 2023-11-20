@@ -6,7 +6,7 @@
 /*   By: hyunjunk <hyunjunk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 17:39:21 by hyunjunk          #+#    #+#             */
-/*   Updated: 2023/11/15 22:10:10 by hyunjunk         ###   ########.fr       */
+/*   Updated: 2023/11/20 17:12:06 by hyunjunk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,11 @@ t_hit	compute_reflect_recursive(
 	reflect.dir = vector_normalize(vector_sub(
 				hit_ray.dir, scalar_mul(2.f
 					* vector_dot(hit_ray.dir, hit.normal), hit.normal)));
-	reflect.origin = pos_add(hit_ray.origin, scalar_mul(0.001, reflect.dir));
+	reflect.origin = pos_add(hit_ray.origin, scalar_mul(0.01, reflect.dir));
 	i = -1;
 	while (++i < scene->object_num)
 	{
-		tmp = scene->objects[i]->intersect(
+		tmp = scene->objects[i]->trace_ray(
 				scene->objects[i], reflect, recursion_num - 1);
 		if (tmp.distance >= 0.f && (reflect_hit.distance < 0.f
 				|| tmp.distance < reflect_hit.distance))
@@ -70,7 +70,7 @@ void	render_scene(t_scene *scene, t_img *img, int is_debug_mode)
 			// origin on screen
 			origin = make_vector(
 				((float)x / (float)IMG_WIDTH * 2.f - 1.f) * ((float)IMG_WIDTH / (float)IMG_HEIGHT),
-				(float)y / (float)IMG_HEIGHT * 2.f - 1.f,
+				-((float)y / (float)IMG_HEIGHT * 2.f - 1.f),
 				1.f/tanf(scene->camera->fov / 2), 1.f);
 			// ray direction
 			ray = make_vector(
@@ -89,7 +89,7 @@ void	render_scene(t_scene *scene, t_img *img, int is_debug_mode)
 					scene->objects[j]->reflect_ratio = 0.5f;
 				}
 
-				hit = scene->objects[i]->intersect(
+				hit = scene->objects[i]->trace_ray(
 					scene->objects[i], make_ray(origin, ray), 2);
 				if (hit.distance >= 0.f)
 					break;
