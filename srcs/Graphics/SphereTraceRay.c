@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   SphereTraceRay.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: hyunjunk <hyunjunk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 19:43:42 by hyunjunk          #+#    #+#             */
-/*   Updated: 2023/11/20 19:09:54 by haeem            ###   ########seoul.kr  */
+/*   Updated: 2023/11/20 19:46:32 by hyunjunk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ t_hit	sphere_intersect(t_object *this, t_ray ray)
 	float		b;
 	float		c;
 	float		nabla;
-	t_hit		reflect_hit;
+	float		dis2;
 
 	//printf("intersect this %p\n", this);
 	hit.distance = -1.f;
@@ -67,11 +67,12 @@ t_hit	sphere_intersect(t_object *this, t_ray ray)
 	if (nabla < 0.f)
 		return (hit);
 	hit.distance = (-b / 2.f) + sqrtf(nabla);
-	if (hit.distance > (-b / 2.f) - sqrtf(nabla)
-		&& 0.f <= (-b / 2.f) - sqrtf(nabla) && (-b / 2.f) - sqrtf(nabla) >= 0.f)
-		hit.distance = (-b / 2.f) - sqrtf(nabla);
+	dis2 = (-b / 2.f) - sqrtf(nabla);
+	if ((hit.distance > dis2 && dis2 >= 0.f) || hit.distance < 0.f)
+		hit.distance = dis2;
 	hit.point = pos_add(ray.origin, scalar_mul(hit.distance, ray.dir));
 	hit.normal = vector_normalize(vector_sub(hit.point, this->view_pos));
+	return (hit);
 }
 
 t_vector

@@ -6,7 +6,7 @@
 /*   By: hyunjunk <hyunjunk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 15:41:30 by hyunjunk          #+#    #+#             */
-/*   Updated: 2023/11/15 17:01:21 by hyunjunk         ###   ########.fr       */
+/*   Updated: 2023/11/20 21:10:33 by hyunjunk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	transpose(t_matrix *mat)
 	y.ymm1 = _mm256_permute2f128_ps(y.ymm2, y.ymm3, 0x31);
 	y.ymm2 = _mm256_shuffle_ps(y.ymm0, y.ymm1, 0x88);
 	y.ymm3 = _mm256_shuffle_ps(y.ymm0, y.ymm1, 0xdd);
-	y.ymm4 = _mm256_insertf128_ps(y.ymm2, _mm256_extractf128_ps(y.ymm3, 1), 1);
+	y.ymm4 = _mm256_insertf128_ps(y.ymm2, _mm256_extractf128_ps(y.ymm3, 0), 1);
 	y.ymm5 = _mm256_permute2f128_ps(y.ymm2, y.ymm3, 0x31);
 	y.ymm6 = _mm256_shuffle_ps(y.ymm4, y.ymm5, 0x88);
 	y.ymm7 = _mm256_shuffle_ps(y.ymm4, y.ymm5, 0xdd);
@@ -50,6 +50,7 @@ void	transform(t_vector *dst, const t_vector *src, const t_matrix *mat_tr)
 void	concatenate(t_matrix *dst, const t_matrix *m0, const t_matrix *m1_tr)
 {
 	t_avx		y;
+	t_sse		x;
 	int			i;
 
 	y.ymm2 = _mm256_load_ps(&m1_tr->m[0][0]);
@@ -60,10 +61,11 @@ void	concatenate(t_matrix *dst, const t_matrix *m0, const t_matrix *m1_tr)
 		y.ymm0 = _mm256_broadcast_ps((__m128 *)&m0->m[i][0]);
 		y.ymm4 = _mm256_dp_ps(y.ymm0, y.ymm2, 0xf1);
 		y.ymm5 = _mm256_dp_ps(y.ymm0, y.ymm3, 0xf1);
-		y.ymm6 = _mm256_permute2f128_ps(y.ymm4, y.ymm5, 0x20);
-		y.ymm7 = _mm256_permute2f128_ps(y.ymm4, y.ymm5, 0x31);
-		y.ymm0 = _mm256_shuffle_ps(y.ymm6, y.ymm7, 0x88);
-		_mm256_store_ps(&dst->m[0][0], y.ymm0);
+		y.ymm4 = _mm256_permute4x64_epi64(y.ymm4, 0xf8);
+		y.ymm5 = _mm256_permute4x64_epi64(y.ymm5, 0xf8);
+		x.xmm4 = _mm_shuffle_ps(_mm256_extractf128_ps(y.ymm4, 0),
+				_mm256_extractf128_ps(y.ymm5, 0), 0x88);
+		_mm_store_ps(&dst->m[i][0], x.xmm4);
 	}
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: hyunjunk <hyunjunk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 22:00:13 by haeem             #+#    #+#             */
-/*   Updated: 2023/11/20 19:16:15 by haeem            ###   ########seoul.kr  */
+/*   Updated: 2023/11/20 21:14:05 by hyunjunk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	keypressed_debug(int keycode, void *param)
 	else
 		return ;
 	render_scene(&cb->scene, &cb->img, (int)cb->is_debug);
+	mlx_put_image_to_window(cb->mlx.mlx, cb->mlx.win, cb->img.ptr, 0, 0);
 }
 
 void	keypressed_rotation(int keycode, void *param)
@@ -52,6 +53,7 @@ void	keypressed_rotation(int keycode, void *param)
 		return ;
 	}
 	render_scene(&cb->scene, &cb->img, (int)cb->is_debug);
+	mlx_put_image_to_window(cb->mlx.mlx, cb->mlx.win, cb->img.ptr, 0, 0);
 }
 
 void	keypressed(int keycode, void *param)
@@ -68,7 +70,7 @@ void	keypressed(int keycode, void *param)
 	else if (keycode == KEY_A)
 		cb->scene.camera->pos.x -= 10;
 	else if (keycode == KEY_D)
-		cb->scene.camera->pos.z += 10;
+		cb->scene.camera->pos.x += 10;
 	else if (keycode == KEY_SPACEBAR)
 		cb->scene.camera->pos.y += 10;
 	else if (keycode == KEY_SHIFT_LEFT)
@@ -79,6 +81,7 @@ void	keypressed(int keycode, void *param)
 		return ;
 	}
 	render_scene(&cb->scene, &cb->img, (int)cb->is_debug);
+	mlx_put_image_to_window(cb->mlx.mlx, cb->mlx.win, cb->img.ptr, 0, 0);
 }
 
 void	hooks(t_control_block *cb)

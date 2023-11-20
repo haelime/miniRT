@@ -6,7 +6,7 @@
 /*   By: hyunjunk <hyunjunk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 16:08:31 by haeem             #+#    #+#             */
-/*   Updated: 2023/11/15 18:46:10 by hyunjunk         ###   ########.fr       */
+/*   Updated: 2023/11/20 20:32:46 by hyunjunk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 # define WIN_WIDTH 2560
 # define WIN_HEIGHT 1300
 
-# define IMG_WIDTH 1920
-# define IMG_HEIGHT 1060
+# define IMG_WIDTH 640
+# define IMG_HEIGHT 480
 
 typedef struct s_img
 {

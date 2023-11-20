@@ -6,7 +6,7 @@
 /*   By: hyunjunk <hyunjunk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 17:39:21 by hyunjunk          #+#    #+#             */
-/*   Updated: 2023/11/20 17:12:06 by hyunjunk         ###   ########.fr       */
+/*   Updated: 2023/11/20 20:29:10 by hyunjunk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ void	render_scene(t_scene *scene, t_img *img, int is_debug_mode)
 	t_vector	ray;
 	t_hit		hit;
 
+	transform_scene_camera_coord(scene);
+
 	y = -1;
 	while (++y < IMG_HEIGHT)
 	{
@@ -67,6 +69,9 @@ void	render_scene(t_scene *scene, t_img *img, int is_debug_mode)
 		x = -1;
 		while (++x < IMG_WIDTH)
 		{
+			if (y == 0)
+				printf("%d\n", x);
+
 			// origin on screen
 			origin = make_vector(
 				((float)x / (float)IMG_WIDTH * 2.f - 1.f) * ((float)IMG_WIDTH / (float)IMG_HEIGHT),
@@ -85,12 +90,19 @@ void	render_scene(t_scene *scene, t_img *img, int is_debug_mode)
 				t_matrix tmp_tr_camera;
 				make_diagonal_matrix(&tmp_tr_camera, make_vector(1.f, 1.f, 1.f, 1.f));
 				for (int j = 0; j < scene->object_num; j++) {
-					scene->objects[j]->update_view_mat(scene->objects[j], &tmp_tr_camera);
+					//scene->objects[j]->update_view_mat(scene->objects[j], &tmp_tr_camera);
 					scene->objects[j]->reflect_ratio = 0.5f;
 				}
 
-				hit = scene->objects[i]->trace_ray(
-					scene->objects[i], make_ray(origin, ray), 2);
+				if (!is_debug_mode) {
+					hit = scene->objects[i]->trace_ray(
+						scene->objects[i], make_ray(origin, ray), 2);
+				}
+				else {
+					hit = scene->objects[i]->intersect(
+						scene->objects[i], make_ray(origin, ray));
+					hit.color = hit.obj->color;
+				}
 				if (hit.distance >= 0.f)
 					break;
 			}

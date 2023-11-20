@@ -6,7 +6,7 @@
 /*   By: hyunjunk <hyunjunk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 19:24:29 by hyunjunk          #+#    #+#             */
-/*   Updated: 2023/11/15 17:38:35 by hyunjunk         ###   ########.fr       */
+/*   Updated: 2023/11/20 19:47:16 by hyunjunk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ typedef struct s_scene
 
 // Should be called after all objects' transform matrices are updated
 void	render_scene(t_scene *scene, t_img *img, int is_debug_mode);
+void	init_render_scene(t_scene *scene);
+void	transform_scene_camera_coord(t_scene *scene);
 t_hit	compute_reflect_recursive(
 			t_scene *scene, t_hit hit, t_ray hit_ray, int recursion_num);
 

@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+         #
+#    By: hyunjunk <hyunjunk@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/11 14:22:09 by haeem             #+#    #+#              #
-#    Updated: 2023/11/20 19:10:49 by haeem            ###   ########seoul.kr   #
+#    Updated: 2023/11/20 19:50:59 by hyunjunk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 CC = cc
-CFLAGS = -Wall -Wextra -mavx2 -o3 -fsanitize=address #werror
+CFLAGS = -Wall -Wextra -mavx2 -g3 -fsanitize=address #werror
 SRCDIR = $(CURDIR)
 
 NAME = miniRT
@@ -29,6 +29,7 @@ Control/ControlBlock.c\
 Control/hooks.c\
 Control/Image.c\
 Control/Scene.c\
+Control/Scene2.c\
 Graphics/Matrix.c\
 Graphics/Object.c\
 Graphics/Ray.c\

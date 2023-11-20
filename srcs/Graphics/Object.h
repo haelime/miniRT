@@ -6,7 +6,7 @@
 /*   By: hyunjunk <hyunjunk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 18:19:40 by hyunjunk          #+#    #+#             */
-/*   Updated: 2023/11/20 15:24:21 by hyunjunk         ###   ########.fr       */
+/*   Updated: 2023/11/20 19:31:34 by hyunjunk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,7 @@ typedef struct s_object
 	float		reachable_max_radius;
 	t_hit		((*trace_ray)(t_object * this, t_ray ray, int recursion_num));
 	t_hit		((*intersect)(t_object * this, t_ray ray));
-	void		((*update_rotation)(t_object *this, t_vector rot));
-	void		((*update_pos)(t_object *this, t_vector pos));
+	void		((*init_world_coord)(t_object *this));
 	void		((*update_view_mat)(t_object *this, t_matrix *tr_view_mat));
 	t_matrix	tr_rot_mat;
 	t_matrix	tr_pos_mat;
