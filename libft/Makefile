@@ -6,7 +6,7 @@
 #    By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/25 13:40:12 by haeem             #+#    #+#              #
-#    Updated: 2023/09/07 19:39:14 by haeem            ###   ########seoul.kr   #
+#    Updated: 2023/11/27 14:56:45 by haeem            ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,6 +72,7 @@ ft_swap.c\
 ft_selection_sort.c\
 ft_binary_search.c\
 ft_isempty.c\
+ft_fabs.c\
 ./get_next_line/get_next_line_bonus.c\
 ./get_next_line/get_next_line_utils_bonus.c\
 ./printf/srcs_bonus/ft_printf_bonus.c\
