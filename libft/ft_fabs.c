@@ -6,11 +6,11 @@
 /*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 14:53:18 by haeem             #+#    #+#             */
-/*   Updated: 2023/11/27 14:56:20 by haeem            ###   ########seoul.kr  */
+/*   Updated: 2023/11/27 16:23:50 by haeem            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-float	fabs(float x)
+float	ft_fabs(float x)
 {
 	const int	sign_bit = *(int *)&x & 0x80000000;
 
