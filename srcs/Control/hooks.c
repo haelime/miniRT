@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunjunk <hyunjunk@student.42.fr>          +#+  +:+       +#+        */
+/*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 22:00:13 by haeem             #+#    #+#             */
-/*   Updated: 2023/11/20 21:14:05 by hyunjunk         ###   ########.fr       */
+/*   Updated: 2023/11/27 16:22:16 by haeem            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void	keypressed(int keycode, void *param)
 
 void	hooks(t_control_block *cb)
 {
-	cb->scene.camera->pos;
+	// cb->scene.camera->pos;
 	mlx_hook(cb->mlx.win, KEYPRESS, 1L << 0, (void *)keypressed, cb);
 	mlx_hook(cb->mlx.win, 17, 0, (void *)exit, (0));
 }

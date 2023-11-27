@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Object.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunjunk <hyunjunk@student.42.fr>          +#+  +:+       +#+        */
+/*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 18:19:40 by hyunjunk          #+#    #+#             */
-/*   Updated: 2023/11/20 19:31:34 by hyunjunk         ###   ########.fr       */
+/*   Updated: 2023/11/26 16:03:14 by haeem            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include "Vector.h"
 # include "Matrix.h"
 # include "Ray.h"
+
+# define EPSILON (0.000001f)
 
 typedef struct s_hit	t_hit;
 typedef struct s_scene	t_scene;

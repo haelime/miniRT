@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Scene.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunjunk <hyunjunk@student.42.fr>          +#+  +:+       +#+        */
+/*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 17:39:21 by hyunjunk          #+#    #+#             */
-/*   Updated: 2023/11/20 20:29:10 by hyunjunk         ###   ########.fr       */
+/*   Updated: 2023/11/27 17:57:33 by haeem            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,8 @@ void	render_scene(t_scene *scene, t_img *img, int is_debug_mode)
 					scene->objects[j]->reflect_ratio = 0.5f;
 				}
 
-				if (!is_debug_mode) {
+				// TODO : rm false when done
+				if (false && !is_debug_mode) {
 					hit = scene->objects[i]->trace_ray(
 						scene->objects[i], make_ray(origin, ray), 2);
 				}
