@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunjunk <hyunjunk@student.42.fr>          +#+  +:+       +#+        */
+/*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 19:51:07 by hyunjunk          #+#    #+#             */
-/*   Updated: 2023/11/20 20:03:12 by hyunjunk         ###   ########.fr       */
+/*   Updated: 2023/11/28 20:05:09 by haeem            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,6 @@ void	parse(char *file, t_scene *scene)
 			|| ft_strncmp(line, "cy ", 3) == 0
 			|| ft_strncmp(line, "tr ", 3) == 0)
 			parse_object(line, scene);
-		else
-			exit_parse(line);
 		free(line);
 		line = NULL;
 	}

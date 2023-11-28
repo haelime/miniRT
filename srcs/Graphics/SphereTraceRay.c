@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   SphereTraceRay.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunjunk <hyunjunk@student.42.fr>          +#+  +:+       +#+        */
+/*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 19:43:42 by hyunjunk          #+#    #+#             */
-/*   Updated: 2023/11/20 19:46:32 by hyunjunk         ###   ########.fr       */
+/*   Updated: 2023/11/28 20:52:58 by haeem            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ t_hit	sphere_intersect(t_object *this, t_ray ray)
 		hit.distance = dis2;
 	hit.point = pos_add(ray.origin, scalar_mul(hit.distance, ray.dir));
 	hit.normal = vector_normalize(vector_sub(hit.point, this->view_pos));
+	hit.color = this->color;
 	return (hit);
 }
 

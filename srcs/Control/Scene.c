@@ -6,7 +6,7 @@
 /*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 17:39:21 by hyunjunk          #+#    #+#             */
-/*   Updated: 2023/11/27 17:57:33 by haeem            ###   ########seoul.kr  */
+/*   Updated: 2023/11/28 20:58:16 by haeem            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,7 @@ void	render_scene(t_scene *scene, t_img *img, int is_debug_mode)
 				origin.x, origin.y, 1.f, 0.f);
 			ray = vector_normalize(ray);
 
-			
-
+			hit.distance = -1;
 			for (int i = 0; i < scene->object_num; i++)
 			{
 				//DEBUG
@@ -94,23 +93,23 @@ void	render_scene(t_scene *scene, t_img *img, int is_debug_mode)
 					scene->objects[j]->reflect_ratio = 0.5f;
 				}
 
-				// TODO : rm false when done
-				if (false && !is_debug_mode) {
-					hit = scene->objects[i]->trace_ray(
+				t_hit tmp;
+				if (!is_debug_mode) {
+					tmp = scene->objects[i]->trace_ray(
 						scene->objects[i], make_ray(origin, ray), 2);
 				}
 				else {
-					hit = scene->objects[i]->intersect(
+					tmp = scene->objects[i]->intersect(
 						scene->objects[i], make_ray(origin, ray));
-					hit.color = hit.obj->color;
+					tmp.color = tmp.obj->color;
 				}
-				if (hit.distance >= 0.f)
-					break;
+				if ((tmp.distance >= 0.f && hit.distance > tmp.distance) || hit.distance < 0.f)
+					hit = tmp;
 			}
 
 			//printf("distance = %f\n", hit.distance);
 			if (hit.distance <= 0.f) {
-				img->data[x + y * IMG_WIDTH] = 255;
+				img->data[x + y * IMG_WIDTH] = 0;
 			}
 			else
 			{

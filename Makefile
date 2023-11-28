@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hyunjunk <hyunjunk@student.42.fr>          +#+  +:+       +#+         #
+#    By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/11 14:22:09 by haeem             #+#    #+#              #
-#    Updated: 2023/11/20 19:50:59 by hyunjunk         ###   ########.fr        #
+#    Updated: 2023/11/28 20:47:36 by haeem            ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
 
 CC = cc
-CFLAGS = -Wall -Wextra -mavx2 -g3 -fsanitize=address #werror
+CFLAGS = -Wall -Wextra -mavx2 -o3 -fsanitize=address #werror
 SRCDIR = $(CURDIR)
 
 NAME = miniRT
@@ -39,12 +39,12 @@ Graphics/Triangle.c\
 Graphics/Vector.c\
 Graphics/Vector2.c\
 Graphics/Vector3.c\
-main.c\
 Parse/Parse.c\
 Parse/Parse_common.c\
 Parse/Parse_object.c\
 Parse/Parse_object2.c\
 Parse/Parse_util.c\
+main.c\
 )
 
 # BONUSES = $(addprefix $(CURDIR)/srcs_bonus/,\
