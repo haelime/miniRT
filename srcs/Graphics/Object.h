@@ -6,7 +6,7 @@
 /*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 18:19:40 by hyunjunk          #+#    #+#             */
-/*   Updated: 2023/11/26 16:03:14 by haeem            ###   ########seoul.kr  */
+/*   Updated: 2023/11/30 17:50:12 by haeem            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@
 # include "Matrix.h"
 # include "Ray.h"
 
-# define EPSILON (0.000001f)
+# define EPSILON (1.E-8f)
+# define PI (3.14159265358979323f)
 
 typedef struct s_hit	t_hit;
 typedef struct s_scene	t_scene;

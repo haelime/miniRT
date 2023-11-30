@@ -6,7 +6,7 @@
 /*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 19:44:39 by hyunjunk          #+#    #+#             */
-/*   Updated: 2023/11/28 20:40:47 by haeem            ###   ########seoul.kr  */
+/*   Updated: 2023/11/30 18:31:51 by haeem            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	triangle_update_view_mat(t_object *this, t_matrix *tr_view_mat)
 	transform(&tri->v_view[0], &tri->v_world[0], tr_view_mat);
 	transform(&tri->v_view[1], &tri->v_world[1], tr_view_mat);
 	transform(&tri->v_view[2], &tri->v_world[2], tr_view_mat);
-	transform(&tri->normal, &this->pos, tr_view_mat);
+	transform(&tri->normal_view, &tri->normal, tr_view_mat);
 
 	return ; 
 }
@@ -79,7 +79,7 @@ void	triangle_init_world_coord(t_object *this)
 	tri->v_world[1] = pos_add(tri->v[1], tri->object.pos);
 	tri->v_world[2] = pos_add(tri->v[2], tri->object.pos);
 
-	tri->normal = vector_normalize(vector_cross(vector_sub(tri->v_view[1], tri->v_view[0]), vector_sub(tri->v_view[2], tri->v_view[0])));
+	tri->normal = vector_normalize(vector_cross(vector_sub(tri->v[1], tri->v[0]), vector_sub(tri->v[2], tri->v[0])));
 
 	return ;
 }
@@ -96,9 +96,9 @@ static bool	is_inside_triangle(t_vector point, t_triangle *tri, t_hit hit)
 					tri->v_view[1], tri->v_view[0]),
 				vector_sub(point, tri->v_view[0])));
 
-	if (vector_dot(norm1, tri->normal) < 0.f
-		|| vector_dot(norm2, tri->normal) < 0.f
-		|| vector_dot(norm3, tri->normal) < 0.f)
+	if (vector_dot(norm1, tri->normal_view) < 0.f
+		|| vector_dot(norm2, tri->normal_view) < 0.f
+		|| vector_dot(norm3, tri->normal_view) < 0.f)
 		return (false);
 	return (true);
 }
@@ -110,18 +110,16 @@ t_hit triangle_intersect(t_object *this, t_ray ray)
     t_vector point;
     t_triangle *const tri = (t_triangle *)this;
 
-    hit.distance = 0.f; // 초기값 변경
-    hit.obj = this;
+	hit.distance = -1.f;
+	hit.obj = this;
+	if (ft_fabs(vector_dot(ray.dir, tri->normal_view)) < EPSILON)
+        return (hit);
 
-    // EPSILON을 이용한 부동소수점 비교 추가
-    if (ft_fabs(vector_dot(ray.dir, tri->normal)) < EPSILON)
-        return hit;
+    t = (vector_dot(tri->v_view[0], tri->normal_view)
+         - vector_dot(ray.origin, tri->normal_view))
+        / vector_dot(ray.dir, tri->normal_view);
 
-    t = (vector_dot(tri->v_view[0], tri->normal)
-         - vector_dot(ray.origin, tri->normal))
-        / vector_dot(ray.dir, tri->normal);
-
-    if (t < EPSILON) // 0 대신 EPSILON 사용
+    if (t < EPSILON)
         return hit;
 
     point = pos_add(ray.origin, scalar_mul(t, ray.dir));
@@ -129,10 +127,9 @@ t_hit triangle_intersect(t_object *this, t_ray ray)
     if (is_inside_triangle(point, tri, hit))
     {
         hit.point = point;
-        // 거리 계산을 t 값 사용하여 수정
         hit.distance = t;
         hit.color = this->color;
-        hit.normal = tri->normal;
+        hit.normal = tri->normal_view;
     }
     return hit;
 }

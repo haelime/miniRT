@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Scene.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunjunk <hyunjunk@student.42.fr>          +#+  +:+       +#+        */
+/*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 19:24:29 by hyunjunk          #+#    #+#             */
-/*   Updated: 2023/11/20 19:47:16 by hyunjunk         ###   ########.fr       */
+/*   Updated: 2023/11/30 17:41:18 by haeem            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,12 @@ t_hit	compute_reflect_recursive(
 
 void	add_object(t_scene *scene, t_object *object);
 void	add_light(t_scene *scene, t_light *light);
+
+t_matrix	make_trans_mat(t_vector pos);
+t_matrix	make_tr_rot_x_mat(float angle);
+t_matrix	make_tr_rot_y_mat(float angle);
+t_matrix	make_tr_rot_z_mat(float angle);
+t_matrix	make_tr_view_mat(t_camera* camera);
+void		transform_scene_camera_coord(t_scene *scene);
 
 #endif // SCENE_H

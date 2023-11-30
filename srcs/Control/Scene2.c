@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Scene2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunjunk <hyunjunk@student.42.fr>          +#+  +:+       +#+        */
+/*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 17:39:21 by hyunjunk          #+#    #+#             */
-/*   Updated: 2023/11/20 21:12:49 by hyunjunk         ###   ########.fr       */
+/*   Updated: 2023/11/30 17:31:42 by haeem            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,28 +78,3 @@ t_matrix	make_tr_rot_z_mat(float angle)
 	return (tr_rot_z_mat);
 }
 
-void	transform_scene_camera_coord(t_scene *scene)
-{
-	int			i;
-	t_matrix	tr_view_mat;
-	t_matrix	tr_rot_x_mat;
-	t_matrix	tr_rot_y_mat;
-	t_matrix	tr_rot_z_mat;
-	
-	tr_view_mat = make_trans_mat(scene->camera->pos);
-	tr_rot_x_mat = make_tr_rot_x_mat(scene->camera->norm_rotation.x);
-	tr_rot_y_mat = make_tr_rot_y_mat(scene->camera->norm_rotation.y);
-	tr_rot_z_mat = make_tr_rot_z_mat(scene->camera->norm_rotation.z);
-	concatenate(&tr_view_mat, &tr_view_mat, &tr_rot_x_mat);
-	concatenate(&tr_view_mat, &tr_view_mat, &tr_rot_y_mat);
-	concatenate(&tr_view_mat, &tr_view_mat, &tr_rot_z_mat);
-
-	transpose(&tr_view_mat);
-
-	i = 0;
-	while (i < scene->object_num)
-	{
-		scene->objects[i]->update_view_mat(scene->objects[i], &tr_view_mat);
-		i++;
-	}
-}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Image.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunjunk <hyunjunk@student.42.fr>          +#+  +:+       +#+        */
+/*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 16:08:31 by haeem             #+#    #+#             */
-/*   Updated: 2023/11/20 20:32:46 by hyunjunk         ###   ########.fr       */
+/*   Updated: 2023/11/30 14:46:26 by haeem            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 # include "mlx.h"
 
-# define WIN_WIDTH 2560
-# define WIN_HEIGHT 1300
+# define WIN_WIDTH 1600
+# define WIN_HEIGHT 900
 
 # define IMG_WIDTH 640
 # define IMG_HEIGHT 480

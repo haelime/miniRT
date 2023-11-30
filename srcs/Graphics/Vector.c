@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Vector.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunjunk <hyunjunk@student.42.fr>          +#+  +:+       +#+        */
+/*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 17:45:06 by hyunjunk          #+#    #+#             */
-/*   Updated: 2023/11/08 18:52:29 by hyunjunk         ###   ########.fr       */
+/*   Updated: 2023/11/30 18:07:52 by haeem            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ t_vector	make_unit_vector(t_vector vector)
 	t_vector	ret;
 	float		length;
 
-	length = sqrt(
+	length = sqrtf(
 			vector.x * vector.x
 			+ vector.y * vector.y
 			+ vector.z * vector.z);
