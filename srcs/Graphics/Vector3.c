@@ -6,7 +6,7 @@
 /*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 17:45:06 by hyunjunk          #+#    #+#             */
-/*   Updated: 2023/11/30 19:31:26 by haeem            ###   ########seoul.kr  */
+/*   Updated: 2023/11/30 19:33:56 by haeem            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ t_vector	vector_mix(t_vector a, t_vector b, float min, float max)
 	t_vector	ret;
 
 	ret.x = (a.x + b.x) / (min + max);
-	ret.y = (a.x + b.x) / (min + max);
-	ret.z = (a.x + b.x) / (min + max);
+	ret.y = (a.y + b.y) / (min + max);
+	ret.z = (a.z + b.z) / (min + max);
 	ret.w = 1;
 
 	return (ret);
