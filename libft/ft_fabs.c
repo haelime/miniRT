@@ -6,15 +6,13 @@
 /*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 14:53:18 by haeem             #+#    #+#             */
-/*   Updated: 2023/11/27 16:23:50 by haeem            ###   ########seoul.kr  */
+/*   Updated: 2023/11/30 18:37:06 by haeem            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 float	ft_fabs(float x)
 {
-	const int	sign_bit = *(int *)&x & 0x80000000;
-
-	*(int *)&x &= 0x7FFFFFFF;
-	*(int *)&x |= sign_bit;
+	if (x < 0)
+		return (-x);
 	return (x);
 }
