@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Vector.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunjunk <hyunjunk@student.42.fr>          +#+  +:+       +#+        */
+/*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 18:24:03 by hyunjunk          #+#    #+#             */
-/*   Updated: 2023/11/20 15:51:17 by hyunjunk         ###   ########.fr       */
+/*   Updated: 2023/11/30 19:29:37 by haeem            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,6 @@ float		vector_length(t_vector vector);
 float		vector_dot(t_vector a, t_vector b);
 t_vector	vector_normalize(t_vector x);
 t_vector	vector_clamp(t_vector a, float min, float max);
+t_vector	vector_mix(t_vector a, t_vector b, float min, float max);
 
 #endif // VECTOR_H

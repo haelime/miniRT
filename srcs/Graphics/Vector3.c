@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Vector3.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunjunk <hyunjunk@student.42.fr>          +#+  +:+       +#+        */
+/*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 17:45:06 by hyunjunk          #+#    #+#             */
-/*   Updated: 2023/11/20 16:37:51 by hyunjunk         ###   ########.fr       */
+/*   Updated: 2023/11/30 19:31:26 by haeem            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,17 @@ t_vector	vector_clamp(t_vector a, float min, float max)
 		ret.w = min;
 	else if (a.w > max)
 		ret.w = max;
+	return (ret);
+}
+
+t_vector	vector_mix(t_vector a, t_vector b, float min, float max)
+{
+	t_vector	ret;
+
+	ret.x = (a.x + b.x) / (min + max);
+	ret.y = (a.x + b.x) / (min + max);
+	ret.z = (a.x + b.x) / (min + max);
+	ret.w = 1;
+
 	return (ret);
 }
