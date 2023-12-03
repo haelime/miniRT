@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Parse_util.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunjunk <hyunjunk@student.42.fr>          +#+  +:+       +#+        */
+/*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 17:57:54 by hyunjunk          #+#    #+#             */
-/*   Updated: 2023/11/08 20:03:02 by hyunjunk         ###   ########.fr       */
+/*   Updated: 2023/12/03 18:13:13 by haeem            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,27 +39,40 @@ int	validate_str(const char *str)
 	return (1);
 }
 
-float	ft_atof(const char *str)
+#include <stdio.h>
+
+float ft_atof(const char *str)
 {
-	long long	integer;
-	long long	decimal;
-	int			decimal_len;
+	float	val = 0;
+	int		afterdot = 0;
+	float	scale = 1;
+	int		neg = 0;
 
 	if (validate_str(str) == 0)
 		exit_parse(NULL);
-	decimal_len = 1;
-	integer = ft_atoll(str);
-	while (*str != '.' && *str != '\0')
-		str++;
-	if (*str == '\0')
-		return (integer);
-	str++;
-	decimal = ft_atoll(str);
-	while (decimal)
+	if (*str == '-')
 	{
-		decimal >>= 1;
-		decimal_len++;
+		str++;
+		neg = 1;
 	}
-	decimal = ft_atoll(str);
-	return (((float)((integer << decimal_len) + decimal)) / (1 << decimal_len));
+	while (*str != '\n' && *str != '\0')
+	{
+		if (afterdot)
+		{
+			scale = scale / 10;
+			val = val + (*str - '0') * scale;
+		}
+		else
+		{
+			if (*str == '.')
+				afterdot++;
+			else
+				val = val * 10.0 + (*str - '0');
+		}
+		str++;
+	}
+	if (neg)
+		return -val;
+	else
+		return val;
 }

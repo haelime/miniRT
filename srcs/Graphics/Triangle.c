@@ -6,7 +6,7 @@
 /*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 19:44:39 by hyunjunk          #+#    #+#             */
-/*   Updated: 2023/11/30 18:31:51 by haeem            ###   ########seoul.kr  */
+/*   Updated: 2023/12/03 18:10:16 by haeem            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,32 +105,32 @@ static bool	is_inside_triangle(t_vector point, t_triangle *tri, t_hit hit)
 
 t_hit triangle_intersect(t_object *this, t_ray ray)
 {
-    t_hit hit;
-    float t;
-    t_vector point;
-    t_triangle *const tri = (t_triangle *)this;
+	t_hit				hit;
+	float				t;
+	t_vector			point;
+	t_triangle *const	tri = (t_triangle *)this;
 
 	hit.distance = -1.f;
 	hit.obj = this;
 	if (ft_fabs(vector_dot(ray.dir, tri->normal_view)) < EPSILON)
-        return (hit);
+		return (hit);
 
-    t = (vector_dot(tri->v_view[0], tri->normal_view)
-         - vector_dot(ray.origin, tri->normal_view))
-        / vector_dot(ray.dir, tri->normal_view);
+	t = (vector_dot(tri->v_view[0], tri->normal_view)
+			- vector_dot(ray.origin, tri->normal_view))
+		/ vector_dot(ray.dir, tri->normal_view);
 
-    if (t < EPSILON)
-        return hit;
+	if (t < EPSILON)
+		return (hit);
 
-    point = pos_add(ray.origin, scalar_mul(t, ray.dir));
+	point = pos_add(ray.origin, scalar_mul(t, ray.dir));
 
-    if (is_inside_triangle(point, tri, hit))
-    {
-        hit.point = point;
-        hit.distance = t;
-        hit.color = this->color;
-        hit.normal = tri->normal_view;
-    }
-    return hit;
+	if (is_inside_triangle(point, tri, hit))
+	{
+		hit.point = point;
+		hit.distance = t;
+		hit.color = this->color;
+		hit.normal = tri->normal_view;
+	}
+	return (hit);
 }
 

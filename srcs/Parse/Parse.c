@@ -6,7 +6,7 @@
 /*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 19:51:07 by hyunjunk          #+#    #+#             */
-/*   Updated: 2023/11/28 20:05:09 by haeem            ###   ########seoul.kr  */
+/*   Updated: 2023/12/03 15:56:11 by haeem            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,8 +91,8 @@ void	parse_object(char *line, t_scene *scene)
 {
 	if (ft_strncmp(line, "sp ", 3) == 0)
 		parse_sphere(line, scene);
-	//else if (ft_strncmp(line, "pl ", 3) == 0)
-	//	parse_plane(line, scene);
+	else if (ft_strncmp(line, "pl ", 3) == 0)
+		parse_plane(line, scene);
 	//else if (ft_strncmp(line, "sq ", 3) == 0)
 	//	parse_square(line, scene);
 	//else if (ft_strncmp(line, "cy ", 3) == 0)

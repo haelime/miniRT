@@ -6,7 +6,7 @@
 /*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 19:43:42 by hyunjunk          #+#    #+#             */
-/*   Updated: 2023/11/30 19:30:29 by haeem            ###   ########seoul.kr  */
+/*   Updated: 2023/12/03 20:35:23 by haeem            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,9 @@ t_vector
 	*out_specular = make_vector(0.f, 0.f, 0.f, 0.f);
 
 	// ambient
-	hit.color = vector_mix(this->color,
-			scalar_mul(this->scene->ambient_ratio, this->scene->ambient), 0.f, 255.f);
+	hit.color = vector_add(this->color,
+			scalar_mul(this->scene->ambient_ratio, this->scene->ambient));
+	hit.color = vector_clamp(hit.color, 0, 255);
 
 	// lighting
 	for (int i = 0; i < this->scene->light_num; i++) {
@@ -109,7 +110,7 @@ t_vector
 		t_vector light_dir = vector_normalize(vector_sub(this->scene->lights[i]->pos, hit.point));
 		float diffuse = vector_dot(light_dir, hit.normal);
 		if (diffuse > 0)
-			hit.color = vector_add(hit.color, scalar_mul(diffuse, this->scene->lights[i]->color));
+			hit.color = vector_mix(hit.color, scalar_mul(diffuse, this->scene->lights[i]->color), 0, 255);
 		// specular
 		t_vector reflect_dir = vector_normalize(vector_sub(scalar_mul(2.f * vector_dot(light_dir, hit.normal), hit.normal), light_dir));
 		float specular_dot = vector_dot(reflect_dir, vector_normalize(vector_sub(ray.origin, hit.point)));

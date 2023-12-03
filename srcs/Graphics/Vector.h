@@ -6,7 +6,7 @@
 /*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 18:24:03 by hyunjunk          #+#    #+#             */
-/*   Updated: 2023/11/30 19:29:37 by haeem            ###   ########seoul.kr  */
+/*   Updated: 2023/12/03 18:58:54 by haeem            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ t_vector	vector_add(t_vector a, t_vector b);
 t_vector	scalar_mul(float scalar, t_vector vector);
 t_vector	pos_sub(t_vector a, t_vector b);
 t_vector	vector_sub(t_vector a, t_vector b);
+t_vector	vector_mul(t_vector a, t_vector b);
 t_vector	pos_add(t_vector a, t_vector b);
 t_vector	vector_cross(t_vector a, t_vector b);
 float		vector_length(t_vector vector);

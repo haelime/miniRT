@@ -6,13 +6,13 @@
 #    By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/11 14:22:09 by haeem             #+#    #+#              #
-#    Updated: 2023/11/30 18:16:03 by haeem            ###   ########seoul.kr   #
+#    Updated: 2023/12/03 20:27:03 by haeem            ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
 
 CC = cc
-CFLAGS = -Wall -Wextra -mavx2 -o2 -fsanitize=address #werror
+CFLAGS = -Wall -Wextra -mavx2 -g3 -fsanitize=address #werror
 SRCDIR = $(CURDIR)
 
 NAME = miniRT
@@ -37,6 +37,7 @@ Graphics/Ray.c\
 Graphics/Sphere.c\
 Graphics/SphereTraceRay.c\
 Graphics/Triangle.c\
+Graphics/Plane.c\
 Graphics/Vector.c\
 Graphics/Vector2.c\
 Graphics/Vector3.c\

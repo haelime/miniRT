@@ -6,7 +6,7 @@
 /*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 17:39:21 by hyunjunk          #+#    #+#             */
-/*   Updated: 2023/11/30 18:53:08 by haeem            ###   ########seoul.kr  */
+/*   Updated: 2023/12/03 19:55:45 by haeem            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,12 +65,12 @@ void	render_scene(t_scene *scene, t_img *img, int is_debug_mode)
 	y = -1;
 	while (++y < IMG_HEIGHT)
 	{
-		printf("%d\n", y);
+		// printf("%d\n", y);
 		x = -1;
 		while (++x < IMG_WIDTH)
 		{
-			if (y == 0)
-				printf("%d\n", x);
+			// if (y == 0)
+				// printf("%d\n", x);
 
 			// origin on screen
 			origin = make_vector(
@@ -96,7 +96,7 @@ void	render_scene(t_scene *scene, t_img *img, int is_debug_mode)
 				t_hit tmp;
 				if (!is_debug_mode) {
 					tmp = scene->objects[i]->trace_ray(
-						scene->objects[i], make_ray(origin, ray), 5);
+						scene->objects[i], make_ray(origin, ray), 2);
 				}
 				else {
 					tmp = scene->objects[i]->intersect(
