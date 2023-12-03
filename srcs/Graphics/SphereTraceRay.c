@@ -6,7 +6,7 @@
 /*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 19:43:42 by hyunjunk          #+#    #+#             */
-/*   Updated: 2023/12/03 20:35:23 by haeem            ###   ########seoul.kr  */
+/*   Updated: 2023/12/03 21:54:35 by haeem            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ t_vector
 		t_vector light_dir = vector_normalize(vector_sub(this->scene->lights[i]->pos, hit.point));
 		float diffuse = vector_dot(light_dir, hit.normal);
 		if (diffuse > 0)
-			hit.color = vector_mix(hit.color, scalar_mul(diffuse, this->scene->lights[i]->color), 0, 255);
+			hit.color = vector_mix(hit.color, scalar_mul(diffuse, this->scene->lights[i]->color),0.f, 255.f);
 		// specular
 		t_vector reflect_dir = vector_normalize(vector_sub(scalar_mul(2.f * vector_dot(light_dir, hit.normal), hit.normal), light_dir));
 		float specular_dot = vector_dot(reflect_dir, vector_normalize(vector_sub(ray.origin, hit.point)));
@@ -118,7 +118,8 @@ t_vector
 		if (specular_dot < 0)
 			continue ;
 		float specular = powf(specular_dot, 100);
-			*out_specular = pos_add(*out_specular, scalar_mul(this->scene->lights[i]->intensity, scalar_mul(specular, this->scene->lights[i]->color)));
+		*out_specular = pos_add(*out_specular, scalar_mul(this->scene->lights[i]->intensity, scalar_mul(specular, this->scene->lights[i]->color)));
+		vector_clamp(*out_specular, 0.f, 255.f);
 	}
 
 	return (hit.color);

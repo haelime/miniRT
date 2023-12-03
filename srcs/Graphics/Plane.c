@@ -6,7 +6,7 @@
 /*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 16:02:52 by haeem             #+#    #+#             */
-/*   Updated: 2023/12/03 19:46:30 by haeem            ###   ########seoul.kr  */
+/*   Updated: 2023/12/03 21:23:55 by haeem            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,16 @@ void	plane_func_init(t_plane *this)
 //     if (t >= 0) return true; // you might want to allow an epsilon here too
 // }
 // return false;
+
+ // assuming vectors are all normalized
+    // float denom = dotProduct(n, l);
+    // if (denom > 1e-6) {
+    //     Vec3f p0l0 = p0 - l0;
+    //     t = dotProduct(p0l0, n) / denom; 
+    //     return (t >= 0);
+    // }
+
+    // return false;
 t_hit	plane_intersect(t_object *this, t_ray ray)
 {
 	t_hit				hit;
@@ -58,6 +68,7 @@ t_hit	plane_intersect(t_object *this, t_ray ray)
 
 void	plane_init_world_coord(t_object *this)
 {
+	this->norm_rotation = vector_normalize(this->norm_rotation);
 	return ;
 }
 
