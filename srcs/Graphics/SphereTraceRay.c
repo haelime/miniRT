@@ -6,7 +6,7 @@
 /*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 19:43:42 by hyunjunk          #+#    #+#             */
-/*   Updated: 2023/12/04 17:31:12 by haeem            ###   ########seoul.kr  */
+/*   Updated: 2023/12/04 19:40:48 by haeem            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,8 +103,10 @@ t_vector
 				break ;
 			}
 		}
-		if (is_shadow)
+		if (is_shadow) {
+			hit.color = make_vector(0,0,0,0);
 			continue ;
+		}
 		
 		// diffuse
 		t_vector light_dir = vector_normalize(vector_sub(this->scene->lights[i]->pos, hit.point));
