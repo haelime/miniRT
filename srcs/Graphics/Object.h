@@ -6,7 +6,7 @@
 /*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 18:19:40 by hyunjunk          #+#    #+#             */
-/*   Updated: 2023/11/30 17:50:12 by haeem            ###   ########seoul.kr  */
+/*   Updated: 2023/12/06 19:44:54 by haeem            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # define PI (3.14159265358979323f)
 
 typedef struct s_hit	t_hit;
+typedef struct s_ray	t_ray;
 typedef struct s_scene	t_scene;
 typedef struct s_object	t_object;
 

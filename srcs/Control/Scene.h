@@ -6,7 +6,7 @@
 /*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 19:24:29 by hyunjunk          #+#    #+#             */
-/*   Updated: 2023/11/30 17:41:18 by haeem            ###   ########seoul.kr  */
+/*   Updated: 2023/12/06 19:44:31 by haeem            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,12 @@
 # include "Light.h"
 # include "Camera.h"
 # include "Object.h"
+# include "Ray.h"
 
 typedef struct s_control_block	t_control_block;
-
+typedef struct s_hit			t_hit;
+typedef struct s_ray			t_ray;
+typedef struct s_scene			t_scene;
 typedef struct s_object			t_object;
 
 typedef struct s_scene

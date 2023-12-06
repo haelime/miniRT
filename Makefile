@@ -6,7 +6,7 @@
 #    By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/11 14:22:09 by haeem             #+#    #+#              #
-#    Updated: 2023/12/03 21:03:41 by haeem            ###   ########seoul.kr   #
+#    Updated: 2023/12/06 19:42:15 by haeem            ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,9 +35,10 @@ Graphics/Matrix.c\
 Graphics/Object.c\
 Graphics/Ray.c\
 Graphics/Sphere.c\
-Graphics/SphereTraceRay.c\
+Graphics/Cylinder.c\
 Graphics/Triangle.c\
 Graphics/Plane.c\
+Graphics/Phong.c\
 Graphics/Vector.c\
 Graphics/Vector2.c\
 Graphics/Vector3.c\

@@ -6,7 +6,7 @@
 /*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 19:44:39 by hyunjunk          #+#    #+#             */
-/*   Updated: 2023/12/03 18:10:16 by haeem            ###   ########seoul.kr  */
+/*   Updated: 2023/12/06 19:49:06 by haeem            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <stdbool.h>
 
 #include "Sphere.h"
+#include "Phong.h"
 
 void	triangle_func_init(t_triangle *this)
 {
@@ -24,40 +25,40 @@ void	triangle_func_init(t_triangle *this)
 	this->object.update_view_mat = triangle_update_view_mat;
 	// this->object.update_pos = triangle_update_pos;
 	this->object.init_world_coord = triangle_init_world_coord;
-	this->object.trace_ray = triangle_trace_ray;
+	this->object.trace_ray = trace_ray;
 }
 
-t_hit	triangle_trace_ray(t_object *this, t_ray ray, int recursion_num)
-{
-	t_hit		hit;
-	t_hit		reflect_hit;
-	t_vector	specular;
+// t_hit	triangle_trace_ray(t_object *this, t_ray ray, int recursion_num)
+// {
+// 	t_hit		hit;
+// 	t_hit		reflect_hit;
+// 	t_vector	specular;
 
-	hit.distance = -1.f;
-	hit = triangle_intersect(this, ray);
-	if (hit.distance < 0.f)
-		return (hit);
-	hit.color = scalar_mul(
-			1.f - this->reflect_ratio,
-			vector_clamp(
-				sphere_get_phong_color(this, ray, hit, &specular), 0.f, 255.f));
-	hit.color = vector_add(hit.color, specular);
-	hit.color = vector_clamp(hit.color, 0.f, 255.f);
-	if (recursion_num <= 0)
-		return (hit);
-	reflect_hit
-		= compute_reflect_recursive(this->scene, hit, ray, recursion_num);
-	if (reflect_hit.distance <= 0)
-		return (hit);
-	reflect_hit.color = vector_clamp(reflect_hit.color, 0.f, 255.f);
-	hit.color = vector_add(
-			hit.color,
-			scalar_mul(
-				this->reflect_ratio,
-				reflect_hit.color));
-	hit.color = vector_clamp(hit.color, 0.f, 255.f);
-	return (hit);
-}
+// 	hit.distance = -1.f;
+// 	hit = triangle_intersect(this, ray);
+// 	if (hit.distance < 0.f)
+// 		return (hit);
+// 	hit.color = scalar_mul(
+// 			1.f - this->reflect_ratio,
+// 			vector_clamp(
+// 				get_phong_color(this, ray, hit, &specular), 0.f, 255.f));
+// 	hit.color = vector_add(hit.color, specular);
+// 	hit.color = vector_clamp(hit.color, 0.f, 255.f);
+// 	if (recursion_num <= 0)
+// 		return (hit);
+// 	reflect_hit
+// 		= compute_reflect_recursive(this->scene, hit, ray, recursion_num);
+// 	if (reflect_hit.distance <= 0)
+// 		return (hit);
+// 	reflect_hit.color = vector_clamp(reflect_hit.color, 0.f, 255.f);
+// 	hit.color = vector_add(
+// 			hit.color,
+// 			scalar_mul(
+// 				this->reflect_ratio,
+// 				reflect_hit.color));
+// 	hit.color = vector_clamp(hit.color, 0.f, 255.f);
+// 	return (hit);
+// }
 
 void	triangle_update_view_mat(t_object *this, t_matrix *tr_view_mat)
 {

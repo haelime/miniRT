@@ -6,10 +6,9 @@
 /*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 17:34:51 by haeem             #+#    #+#             */
-/*   Updated: 2023/12/04 19:23:18 by haeem            ###   ########seoul.kr  */
+/*   Updated: 2023/12/06 16:20:46 by haeem            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef CYLINDER_H
 # define CYLINDER_H
@@ -43,8 +42,6 @@ void		cylinder_func_init(t_cylinder *this);
 
 t_hit		cylinder_trace_ray(t_object *this, t_ray ray, int recursion_num);
 t_hit		cylinder_intersect(t_object *this, t_ray ray);
-t_vector	cylinder_get_phong_color(
-				t_object *this, t_ray ray, t_hit hit, t_vector *out_specular);
 void		cylinder_init_world_coord(t_object *this);
 void		cylinder_update_view_mat(t_object *this, t_matrix *tr_view_mat);
 

@@ -6,7 +6,7 @@
 /*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 17:57:54 by hyunjunk          #+#    #+#             */
-/*   Updated: 2023/12/03 18:13:13 by haeem            ###   ########seoul.kr  */
+/*   Updated: 2023/12/06 19:36:02 by haeem            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,6 @@ int	validate_str(const char *str)
 	}
 	return (1);
 }
-
-#include <stdio.h>
 
 float ft_atof(const char *str)
 {
