@@ -6,7 +6,7 @@
 /*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 16:16:08 by haeem             #+#    #+#             */
-/*   Updated: 2023/12/06 19:57:03 by haeem            ###   ########seoul.kr  */
+/*   Updated: 2023/12/07 18:14:52 by haeem            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,9 @@ t_vector get_phong_color(t_object *this, t_ray ray, t_hit hit, t_vector *out_spe
 	*out_specular = make_vector(0.f, 0.f, 0.f, 0.f);
 
 	// ambient
-	hit.color = vector_add(this->color,
-			scalar_mul(this->scene->ambient_ratio, this->scene->ambient));
+	hit.color = this->color;
+	// hit.color = vector_add(this->color,
+	// 		scalar_mul(this->scene->ambient_ratio, this->scene->ambient));
 
 	// lighting
 	for (int i = 0; i < this->scene->light_num; i++) {

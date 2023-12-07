@@ -6,7 +6,7 @@
 #    By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/11 14:22:09 by haeem             #+#    #+#              #
-#    Updated: 2023/12/06 19:42:15 by haeem            ###   ########seoul.kr   #
+#    Updated: 2023/12/07 19:44:05 by haeem            ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,6 +36,7 @@ Graphics/Object.c\
 Graphics/Ray.c\
 Graphics/Sphere.c\
 Graphics/Cylinder.c\
+Graphics/Circle.c\
 Graphics/Triangle.c\
 Graphics/Plane.c\
 Graphics/Phong.c\

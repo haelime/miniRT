@@ -6,7 +6,7 @@
 /*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 19:44:39 by hyunjunk          #+#    #+#             */
-/*   Updated: 2023/12/06 19:49:06 by haeem            ###   ########seoul.kr  */
+/*   Updated: 2023/12/07 18:26:57 by haeem            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,7 @@
 void	triangle_func_init(t_triangle *this)
 {
 	this->object.intersect = triangle_intersect;
-	// this->object.update_rotation = triangle_update_rotation;
 	this->object.update_view_mat = triangle_update_view_mat;
-	// this->object.update_pos = triangle_update_pos;
 	this->object.init_world_coord = triangle_init_world_coord;
 	this->object.trace_ray = trace_ray;
 }
@@ -70,8 +68,9 @@ void	triangle_update_view_mat(t_object *this, t_matrix *tr_view_mat)
 	transform(&tri->v_view[2], &tri->v_world[2], tr_view_mat);
 	transform(&tri->normal_view, &tri->normal, tr_view_mat);
 
-	return ; 
+	return ;
 }
+
 void	triangle_init_world_coord(t_object *this)
 {
 	t_triangle *const	tri = (t_triangle *)this;
@@ -80,7 +79,8 @@ void	triangle_init_world_coord(t_object *this)
 	tri->v_world[1] = pos_add(tri->v[1], tri->object.pos);
 	tri->v_world[2] = pos_add(tri->v[2], tri->object.pos);
 
-	tri->normal = vector_normalize(vector_cross(vector_sub(tri->v[1], tri->v[0]), vector_sub(tri->v[2], tri->v[0])));
+	tri->normal = vector_normalize(vector_cross(vector_sub(
+					tri->v[1], tri->v[0]), vector_sub(tri->v[2], tri->v[0])));
 
 	return ;
 }
@@ -104,7 +104,7 @@ static bool	is_inside_triangle(t_vector point, t_triangle *tri, t_hit hit)
 	return (true);
 }
 
-t_hit triangle_intersect(t_object *this, t_ray ray)
+t_hit	triangle_intersect(t_object *this, t_ray ray)
 {
 	t_hit				hit;
 	float				t;
@@ -115,16 +115,12 @@ t_hit triangle_intersect(t_object *this, t_ray ray)
 	hit.obj = this;
 	if (ft_fabs(vector_dot(ray.dir, tri->normal_view)) < EPSILON)
 		return (hit);
-
 	t = (vector_dot(tri->v_view[0], tri->normal_view)
 			- vector_dot(ray.origin, tri->normal_view))
 		/ vector_dot(ray.dir, tri->normal_view);
-
 	if (t < EPSILON)
 		return (hit);
-
 	point = pos_add(ray.origin, scalar_mul(t, ray.dir));
-
 	if (is_inside_triangle(point, tri, hit))
 	{
 		hit.point = point;

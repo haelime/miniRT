@@ -6,7 +6,7 @@
 /*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 17:39:21 by hyunjunk          #+#    #+#             */
-/*   Updated: 2023/12/03 21:10:29 by haeem            ###   ########seoul.kr  */
+/*   Updated: 2023/12/07 18:30:31 by haeem            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ void	render_scene(t_scene *scene, t_img *img, int is_debug_mode)
 			}
 		}
 	}
-	printf("end\n");
+	printf("done\n");
 }
 
 void	add_object(t_scene *scene, t_object *object)

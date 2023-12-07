@@ -6,7 +6,7 @@
 /*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 19:43:42 by hyunjunk          #+#    #+#             */
-/*   Updated: 2023/12/06 19:47:07 by haeem            ###   ########seoul.kr  */
+/*   Updated: 2023/12/07 17:23:35 by haeem            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	sphere_update_view_mat(t_object *this, t_matrix *tr_view_mat)
 	transform(&this->view_pos, &this->pos, tr_view_mat);
 	return ;
 }
+
 t_hit	sphere_intersect(t_object *this, t_ray ray)
 {
 	t_hit		hit;
@@ -51,7 +52,7 @@ t_hit	sphere_intersect(t_object *this, t_ray ray)
 			vector_sub(ray.origin, this->view_pos))
 		- ((t_sphere *)this)->radius * ((t_sphere *)this)->radius;
 	nabla = b * b / 4.f - c;
-	if (nabla < 0.f)
+	if (nabla < EPSILON)
 		return (hit);
 	hit.distance = (-b / 2.f) + sqrtf(nabla);
 	dis2 = (-b / 2.f) - sqrtf(nabla);
