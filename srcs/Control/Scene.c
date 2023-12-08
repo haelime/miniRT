@@ -6,7 +6,7 @@
 /*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 17:39:21 by hyunjunk          #+#    #+#             */
-/*   Updated: 2023/12/07 18:30:31 by haeem            ###   ########seoul.kr  */
+/*   Updated: 2023/12/08 19:55:32 by haeem            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ t_hit	compute_reflect_recursive(
 	reflect.dir = vector_normalize(vector_sub(
 				hit_ray.dir, scalar_mul(2.f
 					* vector_dot(hit_ray.dir, hit.normal), hit.normal)));
-	reflect.origin = pos_add(hit_ray.origin, scalar_mul(0.01, reflect.dir));
+	reflect.origin = pos_add(hit_ray.origin, scalar_mul(0.0001, reflect.dir));
 	i = -1;
 	while (++i < scene->object_num)
 	{
@@ -76,10 +76,10 @@ void	render_scene(t_scene *scene, t_img *img, int is_debug_mode)
 			origin = make_vector(
 				((float)x / (float)IMG_WIDTH * 2.f - 1.f) * ((float)IMG_WIDTH / (float)IMG_HEIGHT),
 				-((float)y / (float)IMG_HEIGHT * 2.f - 1.f),
-				1.f/tanf(scene->camera->fov / 2), 1.f);
+				1.f/tanf(scene->camera->fov  * (M_PI / 180) / 2), 1.f);
 			// ray direction
 			ray = make_vector(
-				origin.x, origin.y, 1.f, 0.f);
+				origin.x, origin.y, origin.z, 0.f);
 			ray = vector_normalize(ray);
 
 			hit.distance = -1;
@@ -113,7 +113,7 @@ void	render_scene(t_scene *scene, t_img *img, int is_debug_mode)
 			}
 			else
 			{
-				img->data[x + y * IMG_WIDTH] = (clamp255((int)hit.color.z) | clamp255((int)hit.color.y) << 8 | clamp255((int)hit.color.x) << 16) & 0x00FFFFFF;
+				img->data[x + y * IMG_WIDTH] = (clamp255((int)hit.color.z) | clamp255((int)hit.color.y) << 8 | clamp255((int)hit.color.x) << 16) & 0xFFFFFF;
 			}
 		}
 	}

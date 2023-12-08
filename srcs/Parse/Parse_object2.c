@@ -6,7 +6,7 @@
 /*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 18:02:17 by hyunjunk          #+#    #+#             */
-/*   Updated: 2023/12/07 18:03:27 by haeem            ###   ########seoul.kr  */
+/*   Updated: 2023/12/08 18:49:16 by haeem            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ void	parse_plane(char *line, t_scene *scene)
 	plane->object.pos = make_vector(ft_atof(pos_split[0]),
 			ft_atof(pos_split[1]), ft_atof(pos_split[2]), 1.f);
 	plane->object.scene = scene;
-	plane->object.norm_rotation = make_vector(ft_atof(norm_split[0]),
-			ft_atof(norm_split[1]), ft_atof(norm_split[2]), 1.f);
+	plane->normal = make_vector(ft_atof(norm_split[0]),
+			ft_atof(norm_split[1]), ft_atof(norm_split[2]), 0.f);
 	plane_func_init(plane);
 	plane->object.color = make_vector(ft_atof(rgb_split[0]),
 			ft_atof(rgb_split[1]), ft_atof(rgb_split[2]), 1.f);
@@ -91,8 +91,8 @@ void	parse_cylinder(char *line, t_scene *scene)
 	cylinder->object.pos = make_vector(ft_atof(pos_split[0]),
 			ft_atof(pos_split[1]), ft_atof(pos_split[2]), 1.f);
 	cylinder->object.scene = scene;
-	cylinder->object.norm_rotation = make_vector(ft_atof(norm_split[0]),
-			ft_atof(norm_split[1]), ft_atof(norm_split[2]), 1.f);
+	cylinder->normal = make_vector(ft_atof(norm_split[0]),
+				ft_atof(norm_split[1]), ft_atof(norm_split[2]), 0.f);
 	cylinder_func_init(cylinder);
 	cylinder->radius = ft_atof(split[3]);
 	cylinder->height = ft_atof(split[4]);
@@ -103,26 +103,26 @@ void	parse_cylinder(char *line, t_scene *scene)
 	circle1->object.pos = make_vector(ft_atof(pos_split[0]),
 			ft_atof(pos_split[1]), ft_atof(pos_split[2]), 1.f);
 	circle1->object.scene = scene;
-	circle1->object.norm_rotation = make_vector(ft_atof(norm_split[0]),
-			ft_atof(norm_split[1]), ft_atof(norm_split[2]), 1.f);
+	circle1->normal = make_vector(ft_atof(norm_split[0]),
+				ft_atof(norm_split[1]), ft_atof(norm_split[2]), 0.f);
 	circle_func_init(circle1);
 	circle1->radius = ft_atof(split[3]);
 	circle1->object.color = make_vector(ft_atof(rgb_split[0]),
 			ft_atof(rgb_split[1]), ft_atof(rgb_split[2]), 1.f);
 	circle1->object.pos = pos_add(cylinder->object.pos,
-			scalar_mul(cylinder->height / 2, cylinder->object.norm_rotation));
+			scalar_mul(cylinder->height / 2, cylinder->normal));
 
 	circle2->object.pos = make_vector(ft_atof(pos_split[0]),
 			ft_atof(pos_split[1]), ft_atof(pos_split[2]), 1.f);
 	circle2->object.scene = scene;
-	circle2->object.norm_rotation = make_vector(ft_atof(norm_split[0]),
-			ft_atof(norm_split[1]), ft_atof(norm_split[2]), 1.f);
+	circle2->normal = make_vector(ft_atof(norm_split[0]),
+				ft_atof(norm_split[1]), ft_atof(norm_split[2]), 0.f);
 	circle_func_init(circle2);
 	circle2->radius = ft_atof(split[3]);
 	circle2->object.color = make_vector(ft_atof(rgb_split[0]),
 			ft_atof(rgb_split[1]), ft_atof(rgb_split[2]), 1.f);
 	circle2->object.pos = pos_add(cylinder->object.pos,
-			scalar_mul(-cylinder->height / 2, cylinder->object.norm_rotation));
+			scalar_mul(-cylinder->height / 2, cylinder->normal));
 
 	add_object(scene, (t_object *)circle1);
 	add_object(scene, (t_object *)circle2);

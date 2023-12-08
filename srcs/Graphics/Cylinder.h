@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cylinder.h                                         :+:      :+:    :+:   */
+/*   Cylinder.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 17:34:51 by haeem             #+#    #+#             */
-/*   Updated: 2023/12/07 17:21:46 by haeem            ###   ########seoul.kr  */
+/*   Updated: 2023/12/08 18:40:24 by haeem            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct s_cylinder
 
 	t_vector		v_world;
 	t_vector		v_view;
+	t_vector		normal;
 	t_vector		normal_view;
 }				t_cylinder;
 

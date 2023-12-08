@@ -6,7 +6,7 @@
 #    By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/11 14:22:09 by haeem             #+#    #+#              #
-#    Updated: 2023/12/07 19:44:05 by haeem            ###   ########seoul.kr   #
+#    Updated: 2023/12/08 18:31:08 by haeem            ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,7 @@ Control/Scene.c\
 Control/Scene2.c\
 Control/Scene3.c\
 Graphics/Matrix.c\
+Graphics/Light.c\
 Graphics/Object.c\
 Graphics/Ray.c\
 Graphics/Sphere.c\

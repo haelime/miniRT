@@ -6,7 +6,7 @@
 /*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 16:02:52 by haeem             #+#    #+#             */
-/*   Updated: 2023/12/06 19:49:44 by haeem            ###   ########seoul.kr  */
+/*   Updated: 2023/12/08 18:23:40 by haeem            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,31 +51,33 @@ t_hit	plane_intersect(t_object *this, t_ray ray)
 
 	hit.distance = -1.f;
 	hit.obj = this;
-	denom = vector_dot(ray.dir, plane->object.norm_rotation);
+	denom = vector_dot(ray.dir, plane->normal_view);
 	if (ft_fabs(denom) < EPSILON)
 		return (hit);
 	t = vector_dot(vector_sub(plane->object.view_pos, ray.origin),
-			plane->object.norm_rotation) / denom;
+			plane->normal_view) / denom;
 	if (t < 0)
 		return (hit);
 	point = pos_add(ray.origin, scalar_mul(t, ray.dir));
 	hit.point = point;
 	hit.distance = t;
 	hit.color = this->color;
-	hit.normal = plane->object.norm_rotation;
+	hit.normal = plane->normal_view;
 	return (hit);
 }
 
 void	plane_init_world_coord(t_object *this)
 {
-	this->norm_rotation = vector_normalize(this->norm_rotation);
 	return ;
 }
 
 void	plane_update_view_mat(t_object *this, t_matrix *tr_view_mat)
 {
+	t_plane *const	plane = (t_plane *)this;
+
 	this->tr_view_mat = *tr_view_mat;
 	transform(&this->view_pos, &this->pos, tr_view_mat);
+	transform(&plane->normal_view, &plane->normal, tr_view_mat);
 	return ;
 }
 

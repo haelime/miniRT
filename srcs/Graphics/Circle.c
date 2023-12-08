@@ -6,7 +6,7 @@
 /*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 17:08:36 by haeem             #+#    #+#             */
-/*   Updated: 2023/12/07 18:00:40 by haeem            ###   ########seoul.kr  */
+/*   Updated: 2023/12/08 18:35:47 by haeem            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,11 @@ t_hit	circle_intersect(t_object *this, t_ray ray)
 
 	hit.distance = -1.f;
 	hit.obj = this;
-	denom = vector_dot(ray.dir, circle->object.norm_rotation);
+	denom = vector_dot(ray.dir, circle->normal_view);
 	if (ft_fabs(denom) < EPSILON)
 		return (hit);
 	t = vector_dot(vector_sub(circle->object.view_pos, ray.origin),
-			circle->object.norm_rotation) / denom;
+			circle->normal_view) / denom;
 	if (t < 0)
 		return (hit);
 	point = pos_add(ray.origin, scalar_mul(t, ray.dir));
@@ -54,7 +54,7 @@ t_hit	circle_intersect(t_object *this, t_ray ray)
 	hit.point = point;
 	hit.distance = t;
 	hit.color = this->color;
-	hit.normal = circle->object.norm_rotation;
+	hit.normal = circle->normal_view;
 	return (hit);
 }
 
@@ -65,8 +65,11 @@ void	circle_init_world_coord(t_object *this)
 
 void	circle_update_view_mat(t_object *this, t_matrix *tr_view_mat)
 {
+	t_circle *const	circle = (t_circle *)this;
+
 	this->tr_view_mat = *tr_view_mat;
 	transform(&this->view_pos, &this->pos, tr_view_mat);
+	transform(&circle->normal_view, &circle->normal, tr_view_mat);
 }
 
 

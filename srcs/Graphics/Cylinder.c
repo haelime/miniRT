@@ -6,7 +6,7 @@
 /*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 17:34:49 by haeem             #+#    #+#             */
-/*   Updated: 2023/12/07 17:30:30 by haeem            ###   ########seoul.kr  */
+/*   Updated: 2023/12/08 18:46:41 by haeem            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ t_hit	cylinder_intersect(t_object *this, t_ray ray)
 {
     t_cylinder *cylinder = (t_cylinder *)this;
     t_vector oc = vector_sub(ray.origin, cylinder->object.view_pos);
-    double a = vector_dot(ray.dir, ray.dir) - pow(vector_dot(ray.dir, cylinder->object.norm_rotation), 2);
-    double b = 2.0 * (vector_dot(ray.dir, oc) - (vector_dot(ray.dir, cylinder->object.norm_rotation) * vector_dot(oc, cylinder->object.norm_rotation)));
-    double c = vector_dot(oc, oc) - pow(vector_dot(oc, cylinder->object.norm_rotation), 2) - (cylinder->radius * cylinder->radius);
+    double a = vector_dot(ray.dir, ray.dir) - pow(vector_dot(ray.dir, cylinder->normal_view), 2);
+    double b = 2.0 * (vector_dot(ray.dir, oc) - (vector_dot(ray.dir, cylinder->normal_view) * vector_dot(oc, cylinder->normal_view)));
+    double c = vector_dot(oc, oc) - pow(vector_dot(oc, cylinder->normal_view), 2) - (cylinder->radius * cylinder->radius);
     double discriminant = b * b - 4 * a * c;
 	t_hit hit;
 
@@ -75,7 +75,7 @@ t_hit	cylinder_intersect(t_object *this, t_ray ray)
 		hit.distance = t1;
 		hit.obj = this;
 		hit.point = vector_add(ray.origin, scalar_mul(t1, ray.dir));
-		hit.normal = vector_normalize(vector_sub(vector_sub(hit.point, cylinder->object.view_pos), scalar_mul(vector_dot(ray.dir, cylinder->object.norm_rotation),cylinder->object.norm_rotation)));
+		hit.normal = vector_normalize(vector_sub(vector_sub(hit.point, cylinder->object.view_pos), scalar_mul(vector_dot(ray.dir, cylinder->normal_view), cylinder->normal_view)));
 		return (hit);
 	}
 }
@@ -84,13 +84,16 @@ void	cylinder_init_world_coord(t_object *this)
 {
 	t_cylinder *const	cylinder = (t_cylinder *)this;
 
-	cylinder->object.norm_rotation = vector_normalize(cylinder->object.norm_rotation);
+	cylinder->normal = vector_normalize(cylinder->normal);
 	return ;
 }
 
 void	cylinder_update_view_mat(t_object *this, t_matrix *tr_view_mat)
 {
+	t_cylinder *const	cylinder = (t_cylinder *)this;
+
 	this->tr_view_mat = *tr_view_mat;
 	transform(&this->view_pos, &this->pos, tr_view_mat);
+	transform(&cylinder->normal_view, &cylinder->normal, tr_view_mat);
 }
 

@@ -6,7 +6,7 @@
 /*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 17:31:45 by haeem             #+#    #+#             */
-/*   Updated: 2023/11/30 17:45:34 by haeem            ###   ########seoul.kr  */
+/*   Updated: 2023/12/08 18:01:44 by haeem            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,12 @@ void	transform_scene_camera_coord(t_scene *scene)
 	while (i < scene->object_num)
 	{
 		scene->objects[i]->update_view_mat(scene->objects[i], &tr_view_mat);
+		i++;
+	}
+	i = 0;
+	while (i < scene->light_num)
+	{
+		light_update_view_mat(scene->lights[i], &tr_view_mat);
 		i++;
 	}
 }
