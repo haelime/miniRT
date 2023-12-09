@@ -6,7 +6,7 @@
 /*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 16:02:52 by haeem             #+#    #+#             */
-/*   Updated: 2023/12/08 18:23:40 by haeem            ###   ########seoul.kr  */
+/*   Updated: 2023/12/09 16:16:21 by haeem            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,6 @@ void	plane_func_init(t_plane *this)
 // }
 // return false;
 
- // assuming vectors are all normalized
-    // float denom = dotProduct(n, l);
-    // if (denom > 1e-6) {
-    //     Vec3f p0l0 = p0 - l0;
-    //     t = dotProduct(p0l0, n) / denom; 
-    //     return (t >= 0);
-    // }
-
-    // return false;
 t_hit	plane_intersect(t_object *this, t_ray ray)
 {
 	t_hit				hit;

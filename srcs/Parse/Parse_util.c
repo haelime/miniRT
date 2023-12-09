@@ -6,7 +6,7 @@
 /*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 17:57:54 by hyunjunk          #+#    #+#             */
-/*   Updated: 2023/12/06 19:36:02 by haeem            ###   ########seoul.kr  */
+/*   Updated: 2023/12/09 17:30:22 by haeem            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,20 +39,26 @@ int	validate_str(const char *str)
 	return (1);
 }
 
-float ft_atof(const char *str)
+void	norminette_atof(const char **str, int *neg, float *scale)
 {
-	float	val = 0;
-	int		afterdot = 0;
-	float	scale = 1;
-	int		neg = 0;
-
-	if (validate_str(str) == 0)
+	*scale = 1.0;
+	if (validate_str(*str) == 0)
 		exit_parse(NULL);
 	if (*str == '-')
 	{
-		str++;
-		neg = 1;
+		(*str)++;
+		*neg = 1;
 	}
+}
+
+float	ft_atof(const char *str)
+{
+	static int		afterdot;
+	static float	val;
+	int				neg;
+	float			scale;
+
+	norminette_atof(&str, &neg, &scale);
 	while (*str != '\n' && *str != '\0')
 	{
 		if (afterdot)
@@ -70,7 +76,7 @@ float ft_atof(const char *str)
 		str++;
 	}
 	if (neg)
-		return -val;
+		return (-val);
 	else
-		return val;
+		return (val);
 }

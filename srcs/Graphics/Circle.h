@@ -6,7 +6,7 @@
 /*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 17:08:49 by haeem             #+#    #+#             */
-/*   Updated: 2023/12/08 18:34:05 by haeem            ###   ########seoul.kr  */
+/*   Updated: 2023/12/09 16:20:30 by haeem            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ typedef struct s_circle
 
 	double		radius;
 }t_circle;
-
 
 void	circle_func_init(t_circle *this);
 t_hit	circle_intersect(t_object *this, t_ray ray);

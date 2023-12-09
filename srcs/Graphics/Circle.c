@@ -6,7 +6,7 @@
 /*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 17:08:36 by haeem             #+#    #+#             */
-/*   Updated: 2023/12/08 18:35:47 by haeem            ###   ########seoul.kr  */
+/*   Updated: 2023/12/09 16:14:53 by haeem            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 // 	t_vector	v_view;
 // 	t_vector	normal_view;
 // }t_circle;
-
 
 void	circle_func_init(t_circle *this)
 {
@@ -48,8 +47,8 @@ t_hit	circle_intersect(t_object *this, t_ray ray)
 	if (t < 0)
 		return (hit);
 	point = pos_add(ray.origin, scalar_mul(t, ray.dir));
-
-	if (vector_dot(vector_sub(point, circle->object.view_pos), vector_sub(point, circle->object.view_pos)) > circle->radius * circle->radius)
+	if (vector_dot(vector_sub(point, circle->object.view_pos), vector_sub(point,
+				circle->object.view_pos)) > circle->radius * circle->radius)
 		return (hit);
 	hit.point = point;
 	hit.distance = t;
@@ -71,5 +70,3 @@ void	circle_update_view_mat(t_object *this, t_matrix *tr_view_mat)
 	transform(&this->view_pos, &this->pos, tr_view_mat);
 	transform(&circle->normal_view, &circle->normal, tr_view_mat);
 }
-
-

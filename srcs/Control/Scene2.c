@@ -6,18 +6,14 @@
 /*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 17:39:21 by hyunjunk          #+#    #+#             */
-/*   Updated: 2023/11/30 17:31:42 by haeem            ###   ########seoul.kr  */
+/*   Updated: 2023/12/09 16:38:55 by haeem            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
 #include "Scene.h"
-#include "libft.h"
-#include "Object.h"
 #include "Vector.h"
 #include "Matrix.h"
-
-#include <stdio.h> //DEBUG //TODO: remove
 
 void	init_render_scene(t_scene *scene)
 {
@@ -77,4 +73,3 @@ t_matrix	make_tr_rot_z_mat(float angle)
 	tr_rot_z_mat.m[1][1] = cos(angle * M_PI);
 	return (tr_rot_z_mat);
 }
-

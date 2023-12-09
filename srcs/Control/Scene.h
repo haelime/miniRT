@@ -6,7 +6,7 @@
 /*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 19:24:29 by hyunjunk          #+#    #+#             */
-/*   Updated: 2023/12/06 19:44:31 by haeem            ###   ########seoul.kr  */
+/*   Updated: 2023/12/09 16:14:11 by haeem            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,20 +44,20 @@ typedef struct s_scene
 }				t_scene;
 
 // Should be called after all objects' transform matrices are updated
-void	render_scene(t_scene *scene, t_img *img, int is_debug_mode);
-void	init_render_scene(t_scene *scene);
-void	transform_scene_camera_coord(t_scene *scene);
-t_hit	compute_reflect_recursive(
-			t_scene *scene, t_hit hit, t_ray hit_ray, int recursion_num);
+void		render_scene(t_scene *scene, t_img *img, int is_debug_mode);
+void		init_render_scene(t_scene *scene);
+void		transform_scene_camera_coord(t_scene *scene);
+t_hit		compute_reflect_recursive(
+				t_scene *scene, t_hit hit, t_ray hit_ray, int recursion_num);
 
-void	add_object(t_scene *scene, t_object *object);
-void	add_light(t_scene *scene, t_light *light);
+void		add_object(t_scene *scene, t_object *object);
+void		add_light(t_scene *scene, t_light *light);
 
 t_matrix	make_trans_mat(t_vector pos);
 t_matrix	make_tr_rot_x_mat(float angle);
 t_matrix	make_tr_rot_y_mat(float angle);
 t_matrix	make_tr_rot_z_mat(float angle);
-t_matrix	make_tr_view_mat(t_camera* camera);
+t_matrix	make_tr_view_mat(t_camera *camera);
 void		transform_scene_camera_coord(t_scene *scene);
 
 #endif // SCENE_H

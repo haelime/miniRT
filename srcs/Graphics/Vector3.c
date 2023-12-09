@@ -6,7 +6,7 @@
 /*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 17:45:06 by hyunjunk          #+#    #+#             */
-/*   Updated: 2023/12/08 18:59:57 by haeem            ###   ########seoul.kr  */
+/*   Updated: 2023/12/09 16:20:06 by haeem            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,6 @@ t_vector	vector_clamp(t_vector a, float min, float max)
 		ret.z = min;
 	else if (a.z > max)
 		ret.z = max;
-	// if (a.w < min)
-	// 	ret.w = min;
-	// else if (a.w > max)
-	// 	ret.w = max;
 	return (ret);
 }
 
@@ -56,7 +52,6 @@ t_vector	vector_mix(t_vector a, t_vector b, float min, float max)
 	ret.y = (a.y * b.y) / (min + max);
 	ret.z = (a.z * b.z) / (min + max);
 	ret.w = 1;
-
 	return (ret);
 }
 
@@ -68,6 +63,5 @@ t_vector	vector_mul(t_vector a, t_vector b)
 	ret.y = a.y * b.y;
 	ret.z = a.x * a.y;
 	ret.w = 0.f;
-
 	return (ret);
 }

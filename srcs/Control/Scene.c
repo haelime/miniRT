@@ -6,7 +6,7 @@
 /*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 17:39:21 by hyunjunk          #+#    #+#             */
-/*   Updated: 2023/12/08 19:55:32 by haeem            ###   ########seoul.kr  */
+/*   Updated: 2023/12/09 17:37:03 by haeem            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,14 +65,9 @@ void	render_scene(t_scene *scene, t_img *img, int is_debug_mode)
 	y = -1;
 	while (++y < IMG_HEIGHT)
 	{
-		// printf("%d\n", y);
 		x = -1;
 		while (++x < IMG_WIDTH)
 		{
-			// if (y == 0)
-				// printf("%d\n", x);
-
-			// origin on screen
 			origin = make_vector(
 				((float)x / (float)IMG_WIDTH * 2.f - 1.f) * ((float)IMG_WIDTH / (float)IMG_HEIGHT),
 				-((float)y / (float)IMG_HEIGHT * 2.f - 1.f),
@@ -81,7 +76,6 @@ void	render_scene(t_scene *scene, t_img *img, int is_debug_mode)
 			ray = make_vector(
 				origin.x, origin.y, origin.z, 0.f);
 			ray = vector_normalize(ray);
-
 			hit.distance = -1;
 			for (int i = 0; i < scene->object_num; i++)
 			{
@@ -89,12 +83,11 @@ void	render_scene(t_scene *scene, t_img *img, int is_debug_mode)
 				t_matrix tmp_tr_camera;
 				make_diagonal_matrix(&tmp_tr_camera, make_vector(1.f, 1.f, 1.f, 1.f));
 				for (int j = 0; j < scene->object_num; j++) {
-					//scene->objects[j]->update_view_mat(scene->objects[j], &tmp_tr_camera);
 					scene->objects[j]->reflect_ratio = 0.5f;
 				}
-
 				t_hit tmp;
-				if (!is_debug_mode) {
+				if (!is_debug_mode) 
+				{
 					tmp = scene->objects[i]->trace_ray(
 						scene->objects[i], make_ray(origin, ray), 2);
 				}

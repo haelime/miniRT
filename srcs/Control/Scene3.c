@@ -6,14 +6,13 @@
 /*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 17:31:45 by haeem             #+#    #+#             */
-/*   Updated: 2023/12/08 18:01:44 by haeem            ###   ########seoul.kr  */
+/*   Updated: 2023/12/09 16:13:04 by haeem            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
 #include "Scene.h"
 #include "libft.h"
-#include "Object.h"
 #include "Vector.h"
 #include "Matrix.h"
 
@@ -31,9 +30,7 @@ t_matrix	make_tr_view_mat(t_camera *camera)
 	concatenate(&tr_view_mat, &tr_view_mat, &tr_rot_x_mat);
 	concatenate(&tr_view_mat, &tr_view_mat, &tr_rot_y_mat);
 	concatenate(&tr_view_mat, &tr_view_mat, &tr_rot_z_mat);
-
 	transpose(&tr_view_mat);
-
 	return (tr_view_mat);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Matrix.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunjunk <hyunjunk@student.42.fr>          +#+  +:+       +#+        */
+/*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 15:41:30 by hyunjunk          #+#    #+#             */
-/*   Updated: 2023/11/20 21:10:33 by hyunjunk         ###   ########.fr       */
+/*   Updated: 2023/12/09 16:15:23 by haeem            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,4 +88,3 @@ void	make_diagonal_matrix(t_matrix *mat, t_vector vec)
 	mat->m[3][2] = 0.f;
 	mat->m[3][3] = vec.w;
 }
-

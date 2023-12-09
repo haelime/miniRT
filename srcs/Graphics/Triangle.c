@@ -6,7 +6,7 @@
 /*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 19:44:39 by hyunjunk          #+#    #+#             */
-/*   Updated: 2023/12/07 18:26:57 by haeem            ###   ########seoul.kr  */
+/*   Updated: 2023/12/09 16:19:43 by haeem            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include "Scene.h"
 #include "libft.h"
 #include <stdbool.h>
-
 #include "Sphere.h"
 #include "Phong.h"
 
@@ -25,13 +24,12 @@ void	triangle_func_init(t_triangle *this)
 	this->object.init_world_coord = triangle_init_world_coord;
 	this->object.trace_ray = trace_ray;
 }
-
 // t_hit	triangle_trace_ray(t_object *this, t_ray ray, int recursion_num)
 // {
 // 	t_hit		hit;
 // 	t_hit		reflect_hit;
 // 	t_vector	specular;
-
+//
 // 	hit.distance = -1.f;
 // 	hit = triangle_intersect(this, ray);
 // 	if (hit.distance < 0.f)
@@ -67,7 +65,6 @@ void	triangle_update_view_mat(t_object *this, t_matrix *tr_view_mat)
 	transform(&tri->v_view[1], &tri->v_world[1], tr_view_mat);
 	transform(&tri->v_view[2], &tri->v_world[2], tr_view_mat);
 	transform(&tri->normal_view, &tri->normal, tr_view_mat);
-
 	return ;
 }
 
@@ -78,10 +75,8 @@ void	triangle_init_world_coord(t_object *this)
 	tri->v_world[0] = pos_add(tri->v[0], tri->object.pos);
 	tri->v_world[1] = pos_add(tri->v[1], tri->object.pos);
 	tri->v_world[2] = pos_add(tri->v[2], tri->object.pos);
-
 	tri->normal = vector_normalize(vector_cross(vector_sub(
 					tri->v[1], tri->v[0]), vector_sub(tri->v[2], tri->v[0])));
-
 	return ;
 }
 
@@ -130,4 +125,3 @@ t_hit	triangle_intersect(t_object *this, t_ray ray)
 	}
 	return (hit);
 }
-

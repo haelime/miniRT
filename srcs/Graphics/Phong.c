@@ -6,7 +6,7 @@
 /*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 16:16:08 by haeem             #+#    #+#             */
-/*   Updated: 2023/12/08 19:42:30 by haeem            ###   ########seoul.kr  */
+/*   Updated: 2023/12/09 16:15:33 by haeem            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 #include <stdio.h>
 
-t_vector get_phong_color(t_object *this, t_ray ray, t_hit hit, t_vector *out_specular)
+t_vector	get_phong_color(t_object *this, t_ray ray, t_hit hit, t_vector *out_specular)
 {
 	*out_specular = make_vector(0.f, 0.f, 0.f, 0.f);
 

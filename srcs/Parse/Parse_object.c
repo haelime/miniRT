@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Parse_object.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunjunk <hyunjunk@student.42.fr>          +#+  +:+       +#+        */
+/*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 16:50:04 by hyunjunk          #+#    #+#             */
-/*   Updated: 2023/11/15 18:03:35 by hyunjunk         ###   ########.fr       */
+/*   Updated: 2023/12/09 16:21:12 by haeem            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,5 +139,3 @@ void	parse_triangle(char *line, t_scene *scene)
 	set_triangle_element(triangle, v1, v2, v3);
 	add_object(scene, (t_object *)triangle);
 }
-
-

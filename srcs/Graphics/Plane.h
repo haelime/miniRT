@@ -6,7 +6,7 @@
 /*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 16:02:52 by haeem             #+#    #+#             */
-/*   Updated: 2023/12/08 18:10:18 by haeem            ###   ########seoul.kr  */
+/*   Updated: 2023/12/09 17:36:11 by haeem            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ typedef struct s_plane
 	t_vector	normal;
 	t_vector	normal_view;
 }t_plane;
-
 
 void	plane_func_init(t_plane *this);
 t_hit	plane_intersect(t_object *this, t_ray ray);

@@ -6,7 +6,7 @@
 /*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 19:43:42 by hyunjunk          #+#    #+#             */
-/*   Updated: 2023/12/07 17:23:35 by haeem            ###   ########seoul.kr  */
+/*   Updated: 2023/12/09 16:17:08 by haeem            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ t_hit	sphere_intersect(t_object *this, t_ray ray)
 	float		nabla;
 	float		dis2;
 
-	//printf("intersect this %p\n", this);
 	hit.distance = -1.f;
 	hit.obj = this;
 	b = 2.f * vector_dot(ray.dir, vector_sub(ray.origin, this->view_pos));

@@ -6,7 +6,7 @@
 /*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 16:21:16 by haeem             #+#    #+#             */
-/*   Updated: 2023/11/14 18:37:17 by haeem            ###   ########seoul.kr  */
+/*   Updated: 2023/12/09 16:10:34 by haeem            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	reset_img(t_img *img)
 	while (++i < IMG_WIDTH * IMG_HEIGHT)
 		img->data[i] = 0;
 }
-
 
 // void	make_image(t_img *img, t_mlx *mlx)
 // {
@@ -44,5 +43,3 @@ void	reset_img(t_img *img)
 	// render_scene(scene);
 // 	mlx_put_image_to_window(mlx->mlx, mlx->win, img->ptr, 0, 0);
 // }
-
-
