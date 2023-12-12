@@ -6,7 +6,7 @@
 /*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 16:16:08 by haeem             #+#    #+#             */
-/*   Updated: 2023/12/09 16:15:33 by haeem            ###   ########seoul.kr  */
+/*   Updated: 2023/12/12 18:43:21 by haeem            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_vector	get_phong_color(t_object *this, t_ray ray, t_hit hit, t_vector *out_spe
 	// hit.color = this->color;
 	hit.color = vector_add(this->color,
 			scalar_mul(this->scene->ambient_ratio, this->scene->ambient));
-
+	
 	// lighting
 	for (int i = 0; i < this->scene->light_num; i++) {
 		int is_shadow = 0;

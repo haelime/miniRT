@@ -6,7 +6,7 @@
 /*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 19:51:07 by hyunjunk          #+#    #+#             */
-/*   Updated: 2023/12/07 15:43:53 by haeem            ###   ########seoul.kr  */
+/*   Updated: 2023/12/12 20:31:28 by haeem            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "Parse.h"
 #include "Scene.h"
 #include "libft.h"
-#include "get_next_line_bonus.h"
+#include "get_next_line.h"
 
 void	exit_parse(char *line)
 {

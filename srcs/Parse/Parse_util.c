@@ -6,7 +6,7 @@
 /*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 17:57:54 by hyunjunk          #+#    #+#             */
-/*   Updated: 2023/12/09 17:30:22 by haeem            ###   ########seoul.kr  */
+/*   Updated: 2023/12/12 20:24:33 by haeem            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,26 +39,39 @@ int	validate_str(const char *str)
 	return (1);
 }
 
-void	norminette_atof(const char **str, int *neg, float *scale)
+void	norminette_atof(const char **str, int *neg, float *scale, int *afterdot)
 {
+	*afterdot = 0;
 	*scale = 1.0;
+	*neg = 0;
 	if (validate_str(*str) == 0)
 		exit_parse(NULL);
-	if (*str == '-')
+	if (**str == '-')
 	{
 		(*str)++;
 		*neg = 1;
 	}
+	else if (**str == '+')
+		(*str)++;
+}
+
+float	norminette2_atof(int *neg, float *val)
+{
+	if (*neg)
+		return (-(*val));
+	else
+		return (*val);
 }
 
 float	ft_atof(const char *str)
 {
-	static int		afterdot;
-	static float	val;
-	int				neg;
-	float			scale;
+	int		afterdot;
+	int		neg;
+	float	val;
+	float	scale;
 
-	norminette_atof(&str, &neg, &scale);
+	norminette_atof(&str, &neg, &scale, &afterdot);
+	val = 0.0f;
 	while (*str != '\n' && *str != '\0')
 	{
 		if (afterdot)
@@ -75,8 +88,5 @@ float	ft_atof(const char *str)
 		}
 		str++;
 	}
-	if (neg)
-		return (-val);
-	else
-		return (val);
+	return (norminette2_atof(&neg, &val));
 }
