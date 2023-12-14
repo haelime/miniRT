@@ -6,7 +6,7 @@
 /*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 17:39:21 by hyunjunk          #+#    #+#             */
-/*   Updated: 2023/12/14 16:45:28 by haeem            ###   ########seoul.kr  */
+/*   Updated: 2023/12/14 17:49:46 by haeem            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,8 +89,6 @@ void	render_scene(t_scene *scene, t_img *img, int is_debug_mode)
 {
 	int			x;
 	int			y;
-	t_vector	origin;
-	t_vector	ray;
 	t_hit		hit;
 
 	transform_scene_camera_coord(scene);

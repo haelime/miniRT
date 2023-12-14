@@ -6,7 +6,7 @@
 /*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 19:44:39 by hyunjunk          #+#    #+#             */
-/*   Updated: 2023/12/09 16:19:43 by haeem            ###   ########seoul.kr  */
+/*   Updated: 2023/12/14 17:54:27 by haeem            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void	triangle_init_world_coord(t_object *this)
 	return ;
 }
 
-static bool	is_inside_triangle(t_vector point, t_triangle *tri, t_hit hit)
+static bool	is_inside_triangle(t_vector point, t_triangle *tri)
 {
 	const t_vector	norm1 = vector_normalize(vector_cross(vector_sub(
 					point, tri->v_view[2]),
@@ -116,7 +116,7 @@ t_hit	triangle_intersect(t_object *this, t_ray ray)
 	if (t < EPSILON)
 		return (hit);
 	point = pos_add(ray.origin, scalar_mul(t, ray.dir));
-	if (is_inside_triangle(point, tri, hit))
+	if (is_inside_triangle(point, tri))
 	{
 		hit.point = point;
 		hit.distance = t;

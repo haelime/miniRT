@@ -6,7 +6,7 @@
 /*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 16:16:08 by haeem             #+#    #+#             */
-/*   Updated: 2023/12/14 16:20:22 by haeem            ###   ########seoul.kr  */
+/*   Updated: 2023/12/14 17:55:21 by haeem            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 #include <stdio.h>
 
-void	add_diffuse_color(t_object *this, t_ray ray, t_hit *hit, int i)
+void	add_diffuse_color(t_object *this, t_hit *hit, int i)
 {
 	const t_vector	light_dir = vector_normalize(
 			vector_sub(this->scene->lights[i]->view_pos, hit->point));
@@ -31,7 +31,7 @@ void	add_diffuse_color(t_object *this, t_ray ray, t_hit *hit, int i)
 	hit->color = vector_clamp(hit->color, 0.f, 255.f);
 }
 
-bool	is_shadowed(t_object *this, t_ray ray, t_hit *hit, int i)
+bool	is_shadowed(t_object *this, t_hit *hit, int i)
 {
 	t_ray	shadow_ray;
 	t_hit	shadow_hit;
@@ -86,9 +86,9 @@ t_vector	get_phong_color(
 			scalar_mul(this->scene->ambient_ratio, this->scene->ambient));
 	while (++i < this->scene->light_num)
 	{
-		if (is_shadowed(this, ray, &hit, i))
+		if (is_shadowed(this, &hit, i))
 			continue ;
-		add_diffuse_color(this, ray, &hit, i);
+		add_diffuse_color(this, &hit, i);
 		light_dir = vector_normalize(vector_sub(
 					this->scene->lights[i]->view_pos, hit.point));
 		specular_dot = add_specular_color(this, ray, &hit, i);

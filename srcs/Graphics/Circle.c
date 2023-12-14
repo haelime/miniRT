@@ -6,7 +6,7 @@
 /*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 17:08:36 by haeem             #+#    #+#             */
-/*   Updated: 2023/12/09 16:14:53 by haeem            ###   ########seoul.kr  */
+/*   Updated: 2023/12/14 17:54:05 by haeem            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ t_hit	circle_intersect(t_object *this, t_ray ray)
 
 void	circle_init_world_coord(t_object *this)
 {
+	(void)this;
 	return ;
 }
 

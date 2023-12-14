@@ -6,7 +6,7 @@
 /*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 19:43:42 by hyunjunk          #+#    #+#             */
-/*   Updated: 2023/12/09 16:17:08 by haeem            ###   ########seoul.kr  */
+/*   Updated: 2023/12/14 17:51:15 by haeem            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	sphere_func_init(t_sphere *this)
 
 void	sphere_init_world_coord(t_object *this)
 {
-	return ;
+	(void)this;
 }
 
 void	sphere_update_view_mat(t_object *this, t_matrix *tr_view_mat)

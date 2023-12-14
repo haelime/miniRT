@@ -6,7 +6,7 @@
 /*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 16:02:52 by haeem             #+#    #+#             */
-/*   Updated: 2023/12/09 16:16:21 by haeem            ###   ########seoul.kr  */
+/*   Updated: 2023/12/14 17:54:40 by haeem            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ t_hit	plane_intersect(t_object *this, t_ray ray)
 
 void	plane_init_world_coord(t_object *this)
 {
+	(void)this;
 	return ;
 }
 

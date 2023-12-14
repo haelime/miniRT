@@ -6,7 +6,7 @@
 /*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 17:34:51 by haeem             #+#    #+#             */
-/*   Updated: 2023/12/14 17:47:46 by haeem            ###   ########seoul.kr  */
+/*   Updated: 2023/12/14 17:53:53 by haeem            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,12 @@ void		cylinder_init_world_coord(t_object *this);
 void		cylinder_update_view_mat(t_object *this, t_matrix *tr_view_mat);
 t_hit		cylinder_intersect(t_object *this, t_ray ray);
 
-t_vector	calculate_oc(t_ray ray, t_cylinder *cylinder);
-double		calculate_a(t_ray ray, t_cylinder *cylinder);
-double		calculate_b(t_ray ray, t_cylinder *cylinder, t_vector oc);
-double		calculate_c(t_vector oc, t_cylinder *cylinder);
-double		calculate_discriminant(t_ray ray, t_cylinder *cylinder, double *t);
+t_vector	calculate_oc(t_ray ray, const t_cylinder *cylinder);
+double		calculate_a(t_ray ray, const t_cylinder *cylinder);
+double		calculate_b(t_ray ray, const t_cylinder *cylinder, t_vector oc);
+double		calculate_c(t_vector oc, const t_cylinder *cylinder);
+double		calculate_discriminant(t_ray ray,
+				const t_cylinder *cylinder, double *t);
 double		find_intersection(double a, double b, double discriminant);
 
 #endif

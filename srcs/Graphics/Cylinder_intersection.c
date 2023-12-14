@@ -6,7 +6,7 @@
 /*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 15:33:43 by haeem             #+#    #+#             */
-/*   Updated: 2023/12/14 17:48:00 by haeem            ###   ########seoul.kr  */
+/*   Updated: 2023/12/14 17:52:32 by haeem            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,8 @@ int	isvalid_intersection(double max, t_vector point, t_vector v_view)
 }
 
 // Function to calculate and return the hit information
-t_hit	calculate_hit(t_object *this, double t, t_ray ray, t_cylinder *cylinder)
+t_hit	calculate_hit(t_object *this, double t,
+				t_ray ray, const t_cylinder *cylinder)
 {
 	t_hit		hit;
 	t_vector	normal;
