@@ -6,7 +6,7 @@
 /*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 19:50:50 by haeem             #+#    #+#             */
-/*   Updated: 2023/11/27 18:07:53 by haeem            ###   ########seoul.kr  */
+/*   Updated: 2023/12/14 16:32:40 by haeem            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,11 @@ int	main(int argc, char **argv)
 {
 	static t_control_block	cb;
 
-	if ((argc != 2 && argc != 3)
-		|| (argc == 3 && ft_strcmp(argv[1], "--save") != 0))
+	if (argc != 2)
 	{
 		ft_putstr_fd("Error\n", STDOUT_FILENO);
 		return (0);
 	}
-	if (argc == 3 && ft_strcmp(argv[1], "--save") == 0);
-		// TODO
 	parse(argv[1], &cb.scene);
 	loop_rt(&cb);
 	return (0);

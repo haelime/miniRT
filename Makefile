@@ -6,7 +6,7 @@
 #    By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/11 14:22:09 by haeem             #+#    #+#              #
-#    Updated: 2023/12/08 18:31:08 by haeem            ###   ########seoul.kr   #
+#    Updated: 2023/12/14 17:46:40 by haeem            ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,8 @@ Graphics/Object.c\
 Graphics/Ray.c\
 Graphics/Sphere.c\
 Graphics/Cylinder.c\
+Graphics/Cylinder_intersection.c\
+Graphics/Cylinder_calculation.c\
 Graphics/Circle.c\
 Graphics/Triangle.c\
 Graphics/Plane.c\

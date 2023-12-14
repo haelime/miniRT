@@ -6,7 +6,7 @@
 /*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 17:39:21 by hyunjunk          #+#    #+#             */
-/*   Updated: 2023/12/09 16:38:55 by haeem            ###   ########seoul.kr  */
+/*   Updated: 2023/12/14 14:40:14 by haeem            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	init_render_scene(t_scene *scene)
 	while (i < scene->object_num)
 	{
 		scene->objects[i]->init_world_coord(scene->objects[i]);
+		scene->objects[i]->reflect_ratio = 0.5f;
 		i++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 19:24:29 by hyunjunk          #+#    #+#             */
-/*   Updated: 2023/12/09 16:14:11 by haeem            ###   ########seoul.kr  */
+/*   Updated: 2023/12/14 15:11:26 by haeem            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef struct s_hit			t_hit;
 typedef struct s_ray			t_ray;
 typedef struct s_scene			t_scene;
 typedef struct s_object			t_object;
+typedef struct s_light			t_light;
 
 typedef struct s_scene
 {
@@ -59,5 +60,6 @@ t_matrix	make_tr_rot_y_mat(float angle);
 t_matrix	make_tr_rot_z_mat(float angle);
 t_matrix	make_tr_view_mat(t_camera *camera);
 void		transform_scene_camera_coord(t_scene *scene);
+int			clamp255(int x);
 
 #endif // SCENE_H

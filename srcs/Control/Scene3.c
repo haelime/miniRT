@@ -6,7 +6,7 @@
 /*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 17:31:45 by haeem             #+#    #+#             */
-/*   Updated: 2023/12/09 16:13:04 by haeem            ###   ########seoul.kr  */
+/*   Updated: 2023/12/14 14:58:44 by haeem            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +52,11 @@ void	transform_scene_camera_coord(t_scene *scene)
 		light_update_view_mat(scene->lights[i], &tr_view_mat);
 		i++;
 	}
+}
+
+int	clamp255(int x)
+{
+	if (x > 255)
+		return (255);
+	return (x);
 }
