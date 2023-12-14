@@ -6,13 +6,13 @@
 #    By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/11 14:22:09 by haeem             #+#    #+#              #
-#    Updated: 2023/12/14 17:49:35 by haeem            ###   ########seoul.kr   #
+#    Updated: 2023/12/14 17:56:18 by haeem            ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
 
 CC = cc
-CFLAGS = -Wall -Wextra -mavx2 -o2 -fsanitize=address -Werror
+CFLAGS = -Wall -Wextra -Werror -mavx2 -o2
 SRCDIR = $(CURDIR)
 
 NAME = miniRT
