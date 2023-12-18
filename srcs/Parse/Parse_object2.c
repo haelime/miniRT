@@ -6,7 +6,7 @@
 /*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 18:02:17 by hyunjunk          #+#    #+#             */
-/*   Updated: 2023/12/12 18:54:04 by haeem            ###   ########seoul.kr  */
+/*   Updated: 2023/12/18 16:33:06 by haeem            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,6 @@ void	free_splits(char **const*pos_split, char **const*norm_split,
 	free_split(*split);
 }
 
-// 평면
-// pl 0.0,0.0,-10.0 0.0,1.0,0.0 0,0,225
-// 구별자 : pl
-// x,y,z 좌표 : 0.0, 0.0, -10.0
-// 정규화된 삼차원 방향 벡터. 각 x, y, z 축 마다 [-1, 1] 의 범위를 가짐 : 0.0, 0.0, 1.0
-// R,G,B 색 범위 [0, 255] : 0, 0, 255
 void	parse_plane(char *line, t_scene *scene)
 {
 	char **const	split = ft_split(line, ' ');

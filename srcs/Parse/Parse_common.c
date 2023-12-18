@@ -6,7 +6,7 @@
 /*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 20:17:49 by hyunjunk          #+#    #+#             */
-/*   Updated: 2023/11/14 18:40:22 by haeem            ###   ########seoul.kr  */
+/*   Updated: 2023/12/18 16:32:43 by haeem            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,6 @@ void	parse_resolution(char *line, t_scene *scene)
 	free_split(split);
 }
 
-/*  A	0.2	255,255,255
-구별자 : A
-범위 내 주변광 비율 [0.0, 1.0] : 0.2
-R,G,B 색 범위 [0, 255] : 255, 255, 255
-*/
 void	parse_ambient(char *line, t_scene *scene)
 {
 	char	**split;
@@ -60,12 +55,6 @@ void	parse_ambient(char *line, t_scene *scene)
 	free_split(split);
 }
 
-/*  C	-50.0,0,20	0,0,1	70
-구별자 : C
-시점의 x, y, z 좌표 : 0.0, 0.0, 20.6
-정규화된 삼차원 방향 벡터. 각 x, y, z 축 마다 [-1, 1] 의 범위를 가짐 : 0.0, 0.0, 1.0
-FOV : 수평 시야 범위 [0, 180]
-*/
 void	parse_camera(char *line, t_scene *scene)
 {
 	char **const	split = ft_split(line, ' ');
@@ -90,11 +79,6 @@ void	parse_camera(char *line, t_scene *scene)
 	free_split(split);
 }
 
-/*  L	-40.0,50.0,0.0	0.6	10,0,255
-구별자 : L
-광원의 x, y, z 좌표 : 0.0, 0.0, 20.6
-빛의 밝기 비율 [0.0, 1.0] : 0.6
-R,G,B 색 범위 [0, 255] : 10, 0, 255 */
 void	parse_light(char *line, t_scene *scene)
 {
 	char **const	split = ft_split(line, ' ');

@@ -6,7 +6,7 @@
 /*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 16:50:04 by hyunjunk          #+#    #+#             */
-/*   Updated: 2023/12/09 16:21:12 by haeem            ###   ########seoul.kr  */
+/*   Updated: 2023/12/18 16:32:57 by haeem            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,6 @@
 
 #include <stdio.h> // DEBUG
 
-/* 구
- sp	0.0,0.0,20.6	12.6	10,0,255
-구별자 : sp
-구 중심의 x,y,z 좌표 : 0.0, 0.0, 20.6
-구의 반지름 : 12.6
-R,G,B 색 범위 [0, 255] : 10, 0, 255 */
 void	parse_sphere(char *line, t_scene *scene)
 {
 	char **const	split = ft_split(line, ' ');
@@ -104,13 +98,6 @@ void	set_triangle_element(
 	free_split(v3);
 }
 
-/* 삼각형
- tr	10.0,20.0,10.0	10.0,10.0,20.0	20.0,10.0,10.0	0,0,255
-구별자 : tr
-첫 번째 점의 x,y,z 좌표 : 10.0, 20.0, 10.0
-두 번째 점의 x,y,z 좌표 : 10.0, 10.0, 20.0
-세 번째 점의 x,y,z 좌표 : 20.0, 10.0, 10.0
-R,G,B 색 범위 [0, 255] : 0, 255, 255 */
 void	parse_triangle(char *line, t_scene *scene)
 {
 	char **const		sp = ft_split(line, ' ');

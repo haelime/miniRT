@@ -6,7 +6,7 @@
 /*   By: haeem <haeem@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 17:39:21 by hyunjunk          #+#    #+#             */
-/*   Updated: 2023/12/14 17:49:46 by haeem            ###   ########seoul.kr  */
+/*   Updated: 2023/12/18 16:29:18 by haeem            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@
 #include "Object.h"
 #include "Vector.h"
 #include "Matrix.h"
-
-#include <stdio.h> //DEBUG //TODO: remove
 
 t_hit	compute_reflect_recursive(
 		t_scene *scene, t_hit hit, t_ray hit_ray, int recursion_num)
