@@ -57,3 +57,4 @@ dkms.conf
 *.swiftsourceinfo
 
 miniRT
+benchmarks/math_profile

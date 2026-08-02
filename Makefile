@@ -12,10 +12,18 @@
 
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -mavx2 -o2
+CFLAGS = -Wall -Wextra -Werror -mavx2 -O2
 SRCDIR = $(CURDIR)
 
 NAME = miniRT
+PROFILE_NAME = benchmarks/math_profile
+PROFILE_ITERATIONS ?= 2000000
+CC_VERSION := $(shell $(CC) --version)
+ifneq (,$(findstring clang,$(CC_VERSION)))
+PROFILE_NOVECTOR = -fno-vectorize -fno-slp-vectorize
+else
+PROFILE_NOVECTOR = -fno-tree-vectorize -fno-tree-slp-vectorize
+endif
 
 LIBFTDIR = $(SRCDIR)/libft
 LIBFT = ./libft/libft.a
@@ -80,6 +88,14 @@ HEADER = -I./srcs/Control\
 
 all: $(NAME)
 
+profile:
+	@$(CC) -Wall -Wextra -Werror -std=c11 -O3 -mavx2 \
+		$(PROFILE_NOVECTOR) \
+		benchmarks/math_profile.c srcs/Graphics/Matrix.c \
+		srcs/Graphics/Vector.c srcs/Graphics/Vector2.c \
+		-Isrcs/Graphics -lm -o $(PROFILE_NAME)
+	@./$(PROFILE_NAME) $(PROFILE_ITERATIONS)
+
 # bonus:
 # 	@make WITH_BONUS=1 all
 
@@ -94,6 +110,7 @@ $(NAME): $(OBJ)
 
 clean:
 	@rm -f $(ALLOBJECTS)
+	@rm -f $(PROFILE_NAME)
 	@make -C $(LIBFTDIR) clean
 	@make -C $(MLX_DIR) clean
 
@@ -105,4 +122,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: re clean fclean all bonus miniRT
+.PHONY: re clean fclean all bonus miniRT profile

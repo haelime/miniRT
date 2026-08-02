@@ -40,8 +40,10 @@ void	transform(t_vector *dst, const t_vector *src, const t_matrix *mat_tr)
 	y.ymm2 = _mm256_load_ps(&mat_tr->m[2][0]);
 	y.ymm1 = _mm256_dp_ps(y.ymm0, y.ymm1, 0xf1);
 	y.ymm2 = _mm256_dp_ps(y.ymm0, y.ymm2, 0xf1);
-	y.ymm1 = _mm256_permute4x64_epi64(y.ymm1, 0xf8);
-	y.ymm2 = _mm256_permute4x64_epi64(y.ymm2, 0xf8);
+	y.ymm1 = _mm256_castsi256_ps(_mm256_permute4x64_epi64(
+			_mm256_castps_si256(y.ymm1), 0xf8));
+	y.ymm2 = _mm256_castsi256_ps(_mm256_permute4x64_epi64(
+			_mm256_castps_si256(y.ymm2), 0xf8));
 	x.xmm1 = _mm_shuffle_ps(_mm256_extractf128_ps(y.ymm1, 0),
 			_mm256_extractf128_ps(y.ymm2, 0), 0x88);
 	_mm_store_ps(&dst->x, x.xmm1);
@@ -61,8 +63,10 @@ void	concatenate(t_matrix *dst, const t_matrix *m0, const t_matrix *m1_tr)
 		y.ymm0 = _mm256_broadcast_ps((__m128 *)&m0->m[i][0]);
 		y.ymm4 = _mm256_dp_ps(y.ymm0, y.ymm2, 0xf1);
 		y.ymm5 = _mm256_dp_ps(y.ymm0, y.ymm3, 0xf1);
-		y.ymm4 = _mm256_permute4x64_epi64(y.ymm4, 0xf8);
-		y.ymm5 = _mm256_permute4x64_epi64(y.ymm5, 0xf8);
+		y.ymm4 = _mm256_castsi256_ps(_mm256_permute4x64_epi64(
+					_mm256_castps_si256(y.ymm4), 0xf8));
+		y.ymm5 = _mm256_castsi256_ps(_mm256_permute4x64_epi64(
+					_mm256_castps_si256(y.ymm5), 0xf8));
 		x.xmm4 = _mm_shuffle_ps(_mm256_extractf128_ps(y.ymm4, 0),
 				_mm256_extractf128_ps(y.ymm5, 0), 0x88);
 		_mm_store_ps(&dst->m[i][0], x.xmm4);

@@ -65,3 +65,18 @@ The `.rt` files define the scene using the following elements:
 https://github.com/haelime/miniRT/assets/44316628/79bc9f9b-31ef-4c7c-b86b-896cfc80f11e
 
 ![image](https://github.com/haelime/miniRT/assets/44316628/7534170c-7e96-4fe6-9670-e4bfe3f3a04b)
+
+# SIMD profiling
+
+The standalone benchmark compares scalar math with the SSE/AVX2 functions used
+by miniRT. It checks result equivalence before measuring dot products,
+matrix-vector transforms, and matrix concatenation.
+
+```bash
+make profile PROFILE_ITERATIONS=5000000
+```
+
+The CSV output reports elapsed time, nanoseconds per call, throughput, and
+speedup. `math_flops_per_call` is identical between scalar and SIMD rows because
+SIMD packs the same arithmetic into wider instructions rather than changing the
+algorithmic operation count.
