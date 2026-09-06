@@ -36,6 +36,7 @@ t_hit	trace_ray(t_object *this, t_ray ray, int recursion_num)
 				get_phong_color(this, ray, hit, &specular), 0.f, 255.f));
 	hit.color = vector_add(hit.color, specular);
 	hit.color = vector_clamp(hit.color, 0.f, 255.f);
+	/* Keep local lighting at the recursion limit; only further bounces stop. */
 	if (recursion_num <= 0)
 		return (hit);
 	reflect_hit

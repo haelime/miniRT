@@ -2,6 +2,16 @@
 
 A simple ray tracer implemented in C using MiniLibX. This project simulates light rays to render 3D scenes with basic geometric objects, featuring Phong reflection model and camera controls.
 
+[Portfolio walkthrough (Korean)](https://haelime.github.io/posts/minirt/)
+
+## Code entry points
+
+- [Scene.c](srcs/Control/Scene.c): camera rays, closest-hit selection and recursive reflection
+- [Ray.c](srcs/Graphics/Ray.c): object intersection and blending local shading with reflected color
+- [Phong.c](srcs/Graphics/Phong.c): per-light diffuse, specular and shadow calculations
+- [Matrix.c](srcs/Graphics/Matrix.c): SIMD matrix operations used for coordinate transforms
+- [Parse.c](srcs/Parse/Parse.c): loading the `.rt` scene description
+
 # Features
 - **Supported Objects**:
   - Sphere
@@ -21,6 +31,7 @@ A simple ray tracer implemented in C using MiniLibX. This project simulates ligh
 # Getting Started
 
 ### Prerequisites
+- x86-64 macOS with AVX2 support: the current Makefile uses `-mavx2` and links the OpenGL and AppKit frameworks.
 - GCC or Clang
 - MiniLibX dependencies (OpenGL, AppKit on macOS)
 
